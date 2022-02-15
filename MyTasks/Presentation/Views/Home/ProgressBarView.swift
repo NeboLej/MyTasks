@@ -18,8 +18,9 @@ class ProgressBarView: UIView {
     private func setupView() {
         backgroundColor = .systemPink
         layer.cornerRadius = 12
-        
     }
+    
+    
     
     
     

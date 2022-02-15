@@ -9,6 +9,8 @@ final class HomeVC: UIViewController {
     
     override func loadView() {
         view = homeView
+        DataHandler.getCurrentWeek()
+        DataHandler.getCurrentWeek1()
     }
     
     override func viewDidLoad() {
