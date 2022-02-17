@@ -41,7 +41,9 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TaskCell.cellId, for: indexPath) as! TaskCell
         let index = indexPath.item
-        cell.setupCell(taskModel: homeVM.taskList[index])
+//        print(cell.bounds)
+        cell.setupCell(taskModel: homeVM.taskList[index], size: CGSize(width: cell.bounds.width, height: cell.bounds.height))
+        
         return cell
     }
     
