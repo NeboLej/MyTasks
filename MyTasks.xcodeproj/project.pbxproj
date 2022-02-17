@@ -9,27 +9,44 @@
 /* Begin PBXBuildFile section */
 		D44C52B727B9B9DF009939C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C52B627B9B9DF009939C3 /* AppDelegate.swift */; };
 		D44C52B927B9B9DF009939C3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C52B827B9B9DF009939C3 /* SceneDelegate.swift */; };
-		D44C52BB27B9B9DF009939C3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C52BA27B9B9DF009939C3 /* ViewController.swift */; };
-		D44C52BE27B9B9DF009939C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D44C52BC27B9B9DF009939C3 /* Main.storyboard */; };
 		D44C52C327B9B9E0009939C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D44C52C127B9B9E0009939C3 /* LaunchScreen.storyboard */; };
 		D44C52D327B9BFBD009939C3 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D44C52D227B9BFBD009939C3 /* Colors.xcassets */; };
 		D44C52D527B9BFCE009939C3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D44C52D427B9BFCE009939C3 /* Images.xcassets */; };
 		D44C52D927B9C049009939C3 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C52D827B9C049009939C3 /* HomeVC.swift */; };
+		D44C52DB27B9C191009939C3 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C52DA27B9C191009939C3 /* HomeView.swift */; };
+		D44C52DD27B9C203009939C3 /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C52DC27B9C203009939C3 /* ProgressBarView.swift */; };
+		D44C52E027B9C6C4009939C3 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C52DF27B9C6C4009939C3 /* Color.swift */; };
+		D44C52E227B9CB6F009939C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D44C52E127B9CB6F009939C3 /* Assets.xcassets */; };
+		D45FBA5A27BEEE82002EB9C8 /* HomeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45FBA5927BEEE82002EB9C8 /* HomeVM.swift */; };
+		D45FBA5D27BEEF7E002EB9C8 /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45FBA5C27BEEF7E002EB9C8 /* TaskModel.swift */; };
+		D47F716A27BC43700012D0B8 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47F716927BC43700012D0B8 /* TaskCell.swift */; };
+		D47F716D27BC47300012D0B8 /* DataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47F716C27BC47300012D0B8 /* DataHandler.swift */; };
+		D47F716F27BC58B00012D0B8 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47F716E27BC58B00012D0B8 /* Font.swift */; };
+		D47F717327BC64000012D0B8 /* MyriadPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D47F717227BC64000012D0B8 /* MyriadPro-Regular.ttf */; };
+		D47F717527BC68740012D0B8 /* MyriadPro-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D47F717427BC68740012D0B8 /* MyriadPro-Bold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D44C52B327B9B9DF009939C3 /* MyTasks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyTasks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D44C52B627B9B9DF009939C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D44C52B827B9B9DF009939C3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D44C52BA27B9B9DF009939C3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D44C52BD27B9B9DF009939C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D44C52C227B9B9E0009939C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D44C52C427B9B9E0009939C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D44C52CA27B9BA4F009939C3 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		D44C52CB27B9BA4F009939C3 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		D44C52D227B9BFBD009939C3 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		D44C52D427B9BFCE009939C3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D44C52D827B9C049009939C3 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		D44C52DA27B9C191009939C3 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		D44C52DC27B9C203009939C3 /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
+		D44C52DF27B9C6C4009939C3 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		D44C52E127B9CB6F009939C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D45FBA5927BEEE82002EB9C8 /* HomeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVM.swift; sourceTree = "<group>"; };
+		D45FBA5C27BEEF7E002EB9C8 /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
+		D47F716927BC43700012D0B8 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
+		D47F716C27BC47300012D0B8 /* DataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHandler.swift; sourceTree = "<group>"; };
+		D47F716E27BC58B00012D0B8 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		D47F717227BC64000012D0B8 /* MyriadPro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MyriadPro-Regular.ttf"; path = "../../../../../../../Downloads/MyriadPro/MyriadPro-Regular.ttf"; sourceTree = "<group>"; };
+		D47F717427BC68740012D0B8 /* MyriadPro-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MyriadPro-Bold.ttf"; path = "../../../../../../../Downloads/MyriadPro/MyriadPro-Bold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,10 +79,9 @@
 		D44C52B527B9B9DF009939C3 /* MyTasks */ = {
 			isa = PBXGroup;
 			children = (
+				D45FBA5B27BEEF58002EB9C8 /* Models */,
 				D44C52CC27B9BA73009939C3 /* Presentation */,
 				D44C52CD27B9BAAA009939C3 /* Core */,
-				D44C52BA27B9B9DF009939C3 /* ViewController.swift */,
-				D44C52BC27B9B9DF009939C3 /* Main.storyboard */,
 				D44C52C127B9B9E0009939C3 /* LaunchScreen.storyboard */,
 			);
 			path = MyTasks;
@@ -74,11 +90,11 @@
 		D44C52CC27B9BA73009939C3 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				D47F716B27BC471A0012D0B8 /* Utils */,
 				D44C52CF27B9BAFC009939C3 /* Views */,
 				D44C52D027B9BB12009939C3 /* ViewControllers */,
 				D44C52D127B9BB23009939C3 /* ViewModels */,
-				D44C52D227B9BFBD009939C3 /* Colors.xcassets */,
-				D44C52D427B9BFCE009939C3 /* Images.xcassets */,
+				D44C52DE27B9C22F009939C3 /* Resourses */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -97,6 +113,7 @@
 				D44C52B627B9B9DF009939C3 /* AppDelegate.swift */,
 				D44C52B827B9B9DF009939C3 /* SceneDelegate.swift */,
 				D44C52C427B9B9E0009939C3 /* Info.plist */,
+				D44C52E127B9CB6F009939C3 /* Assets.xcassets */,
 			);
 			path = System;
 			sourceTree = "<group>";
@@ -120,6 +137,7 @@
 		D44C52D127B9BB23009939C3 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				D45FBA5927BEEE82002EB9C8 /* HomeVM.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -127,6 +145,9 @@
 		D44C52D627B9C011009939C3 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				D44C52DA27B9C191009939C3 /* HomeView.swift */,
+				D44C52DC27B9C203009939C3 /* ProgressBarView.swift */,
+				D47F716927BC43700012D0B8 /* TaskCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -137,6 +158,43 @@
 				D44C52D827B9C049009939C3 /* HomeVC.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		D44C52DE27B9C22F009939C3 /* Resourses */ = {
+			isa = PBXGroup;
+			children = (
+				D47F717027BC62E60012D0B8 /* Fonts */,
+				D44C52D227B9BFBD009939C3 /* Colors.xcassets */,
+				D44C52D427B9BFCE009939C3 /* Images.xcassets */,
+				D44C52DF27B9C6C4009939C3 /* Color.swift */,
+			);
+			path = Resourses;
+			sourceTree = "<group>";
+		};
+		D45FBA5B27BEEF58002EB9C8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D45FBA5C27BEEF7E002EB9C8 /* TaskModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D47F716B27BC471A0012D0B8 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				D47F716C27BC47300012D0B8 /* DataHandler.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		D47F717027BC62E60012D0B8 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				D47F716E27BC58B00012D0B8 /* Font.swift */,
+				D47F717427BC68740012D0B8 /* MyriadPro-Bold.ttf */,
+				D47F717227BC64000012D0B8 /* MyriadPro-Regular.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,9 +257,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				D44C52C327B9B9E0009939C3 /* LaunchScreen.storyboard in Resources */,
+				D47F717327BC64000012D0B8 /* MyriadPro-Regular.ttf in Resources */,
 				D44C52D527B9BFCE009939C3 /* Images.xcassets in Resources */,
+				D47F717527BC68740012D0B8 /* MyriadPro-Bold.ttf in Resources */,
+				D44C52E227B9CB6F009939C3 /* Assets.xcassets in Resources */,
 				D44C52D327B9BFBD009939C3 /* Colors.xcassets in Resources */,
-				D44C52BE27B9B9DF009939C3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,9 +272,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D44C52BB27B9B9DF009939C3 /* ViewController.swift in Sources */,
+				D44C52DD27B9C203009939C3 /* ProgressBarView.swift in Sources */,
+				D45FBA5A27BEEE82002EB9C8 /* HomeVM.swift in Sources */,
+				D47F716A27BC43700012D0B8 /* TaskCell.swift in Sources */,
+				D44C52E027B9C6C4009939C3 /* Color.swift in Sources */,
+				D45FBA5D27BEEF7E002EB9C8 /* TaskModel.swift in Sources */,
 				D44C52D927B9C049009939C3 /* HomeVC.swift in Sources */,
+				D47F716D27BC47300012D0B8 /* DataHandler.swift in Sources */,
+				D47F716F27BC58B00012D0B8 /* Font.swift in Sources */,
 				D44C52B727B9B9DF009939C3 /* AppDelegate.swift in Sources */,
+				D44C52DB27B9C191009939C3 /* HomeView.swift in Sources */,
 				D44C52B927B9B9DF009939C3 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -222,15 +289,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		D44C52BC27B9B9DF009939C3 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D44C52BD27B9B9DF009939C3 /* Base */,
-				D44C52CA27B9BA4F009939C3 /* ru */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		D44C52C127B9B9E0009939C3 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -364,8 +422,8 @@
 		D44C52C827B9B9E0009939C3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = U6ZRGUARQA;
@@ -391,8 +449,8 @@
 		D44C52C927B9B9E0009939C3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = U6ZRGUARQA;
