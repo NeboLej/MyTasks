@@ -17,7 +17,9 @@
 		D44C52DD27B9C203009939C3 /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C52DC27B9C203009939C3 /* ProgressBarView.swift */; };
 		D44C52E027B9C6C4009939C3 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C52DF27B9C6C4009939C3 /* Color.swift */; };
 		D44C52E227B9CB6F009939C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D44C52E127B9CB6F009939C3 /* Assets.xcassets */; };
-		D47F716A27BC43700012D0B8 /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47F716927BC43700012D0B8 /* TaskView.swift */; };
+		D45FBA5A27BEEE82002EB9C8 /* HomeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45FBA5927BEEE82002EB9C8 /* HomeVM.swift */; };
+		D45FBA5D27BEEF7E002EB9C8 /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45FBA5C27BEEF7E002EB9C8 /* TaskModel.swift */; };
+		D47F716A27BC43700012D0B8 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47F716927BC43700012D0B8 /* TaskCell.swift */; };
 		D47F716D27BC47300012D0B8 /* DataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47F716C27BC47300012D0B8 /* DataHandler.swift */; };
 		D47F716F27BC58B00012D0B8 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47F716E27BC58B00012D0B8 /* Font.swift */; };
 		D47F717327BC64000012D0B8 /* MyriadPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D47F717227BC64000012D0B8 /* MyriadPro-Regular.ttf */; };
@@ -38,7 +40,9 @@
 		D44C52DC27B9C203009939C3 /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
 		D44C52DF27B9C6C4009939C3 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		D44C52E127B9CB6F009939C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		D47F716927BC43700012D0B8 /* TaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskView.swift; sourceTree = "<group>"; };
+		D45FBA5927BEEE82002EB9C8 /* HomeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVM.swift; sourceTree = "<group>"; };
+		D45FBA5C27BEEF7E002EB9C8 /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
+		D47F716927BC43700012D0B8 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		D47F716C27BC47300012D0B8 /* DataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHandler.swift; sourceTree = "<group>"; };
 		D47F716E27BC58B00012D0B8 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		D47F717227BC64000012D0B8 /* MyriadPro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MyriadPro-Regular.ttf"; path = "../../../../../../../Downloads/MyriadPro/MyriadPro-Regular.ttf"; sourceTree = "<group>"; };
@@ -75,6 +79,7 @@
 		D44C52B527B9B9DF009939C3 /* MyTasks */ = {
 			isa = PBXGroup;
 			children = (
+				D45FBA5B27BEEF58002EB9C8 /* Models */,
 				D44C52CC27B9BA73009939C3 /* Presentation */,
 				D44C52CD27B9BAAA009939C3 /* Core */,
 				D44C52C127B9B9E0009939C3 /* LaunchScreen.storyboard */,
@@ -132,6 +137,7 @@
 		D44C52D127B9BB23009939C3 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				D45FBA5927BEEE82002EB9C8 /* HomeVM.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -141,7 +147,7 @@
 			children = (
 				D44C52DA27B9C191009939C3 /* HomeView.swift */,
 				D44C52DC27B9C203009939C3 /* ProgressBarView.swift */,
-				D47F716927BC43700012D0B8 /* TaskView.swift */,
+				D47F716927BC43700012D0B8 /* TaskCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -163,6 +169,14 @@
 				D44C52DF27B9C6C4009939C3 /* Color.swift */,
 			);
 			path = Resourses;
+			sourceTree = "<group>";
+		};
+		D45FBA5B27BEEF58002EB9C8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D45FBA5C27BEEF7E002EB9C8 /* TaskModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		D47F716B27BC471A0012D0B8 /* Utils */ = {
@@ -259,8 +273,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D44C52DD27B9C203009939C3 /* ProgressBarView.swift in Sources */,
-				D47F716A27BC43700012D0B8 /* TaskView.swift in Sources */,
+				D45FBA5A27BEEE82002EB9C8 /* HomeVM.swift in Sources */,
+				D47F716A27BC43700012D0B8 /* TaskCell.swift in Sources */,
 				D44C52E027B9C6C4009939C3 /* Color.swift in Sources */,
+				D45FBA5D27BEEF7E002EB9C8 /* TaskModel.swift in Sources */,
 				D44C52D927B9C049009939C3 /* HomeVC.swift in Sources */,
 				D47F716D27BC47300012D0B8 /* DataHandler.swift in Sources */,
 				D47F716F27BC58B00012D0B8 /* Font.swift in Sources */,

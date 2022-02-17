@@ -28,11 +28,22 @@ class HomeView: UIView {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        
         return stackView
     }()
     
- 
+    lazy var tasksCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.minimumLineSpacing = 10
+        layout.minimumInteritemSpacing = 10
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.register(TaskCell.self, forCellWithReuseIdentifier: TaskCell.cellId)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.backgroundColor = .clear
+        return collectionView
+    }()
+    
+    
     init() {
         super.init(frame: .zero)
         fillStackView()
@@ -56,6 +67,7 @@ class HomeView: UIView {
         addSubview(separator)
         addSubview(label)
         addSubview(stackView)
+        addSubview(tasksCollectionView)
         
     }
     
@@ -99,8 +111,13 @@ class HomeView: UIView {
             label.centerYAnchor.constraint(equalTo: stackView.centerYAnchor),
             label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             label.heightAnchor.constraint(equalToConstant: 25),
-            label.widthAnchor.constraint(equalToConstant: 100)
-         ])
+            label.widthAnchor.constraint(equalToConstant: 100),
+            
+            tasksCollectionView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 20),
+            tasksCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            tasksCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            tasksCollectionView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -100)
+        ])
     }
     
 }

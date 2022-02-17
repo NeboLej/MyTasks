@@ -1,17 +1,10 @@
 import UIKit
 
-struct TaskModel {
-    var name: String
-    var color: UIColor
-    var periodicity: Int
-    var date: Date
-}
-
-final class TaskView: UIView {
+final class TaskCell: UICollectionViewCell {
+    
     
     lazy var taskName: UILabel = {
         let label = UILabel()
-        label.text = task.name
         label.font = UIFont(name: Font.myriadProRegular, size: 18)
         label.textColor = .baseText
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -27,16 +20,21 @@ final class TaskView: UIView {
         return label
     }()
     
-    private var task: TaskModel
+    static let cellId = "TaskCell"
     
     
-    
-    init(taskModel: TaskModel) {
-        self.task = taskModel
+    override init(frame: CGRect) {
         super.init(frame: .zero)
+        
         setupView()
         addSubviews()
         initConstraints()
+    }
+    
+    func setupCell(taskModel: TaskModel) {
+        backgroundColor = taskModel.color
+        taskName.text = taskModel.name
+        procent.text = String(getProcentTask()) + "%"
     }
     
     required init?(coder: NSCoder) {
@@ -44,7 +42,6 @@ final class TaskView: UIView {
     }
     
     private func setupView() {
-        backgroundColor = task.color
         alpha = 0.5
         layer.cornerRadius = 12
     }
