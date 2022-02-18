@@ -20,8 +20,19 @@ final class TaskCell: UICollectionViewCell {
         return label
     }()
     
+    
+    lazy var background : UIView = {
+        let background = UIView()
+        background.alpha = 0.5
+        background.translatesAutoresizingMaskIntoConstraints = false
+        return background
+    }()
+
+    
     lazy var circle: UIView = {
         let circle = UIView()
+//        circle.layer.shadowColor = UIColor.red.cgColor
+//        circle.layer.shadowRadius = 100
         return circle
     }()
     
@@ -39,7 +50,8 @@ final class TaskCell: UICollectionViewCell {
     }
     
     func setupCell(taskModel: TaskModel, size: CGSize) {
-        backgroundColor = .gray
+        backgroundColor = .clear
+        background.backgroundColor = taskModel.color
         circle.backgroundColor = taskModel.color
         taskName.text = taskModel.name
         procent.text = String(procentTest) + "%"
@@ -61,6 +73,7 @@ final class TaskCell: UICollectionViewCell {
     }
     
     private func addSubviews() {
+        addSubview(background)
         addSubview(circle)
         addSubview(taskName)
         addSubview(procent)
@@ -68,6 +81,12 @@ final class TaskCell: UICollectionViewCell {
     
     private func initConstraints() {
         NSLayoutConstraint.activate([
+            
+            background.trailingAnchor.constraint(equalTo: trailingAnchor),
+            background.leadingAnchor.constraint(equalTo: leadingAnchor),
+            background.topAnchor.constraint(equalTo: topAnchor),
+            background.bottomAnchor.constraint(equalTo: bottomAnchor),
+            
             taskName.topAnchor.constraint(equalTo: topAnchor, constant: 8),
             taskName.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
             taskName.heightAnchor.constraint(equalToConstant: 25),
