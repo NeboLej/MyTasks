@@ -106,7 +106,7 @@ class HomeView: UIView {
             stackView.topAnchor.constraint(equalTo: separator.bottomAnchor, constant: 10),
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             stackView.heightAnchor.constraint(equalToConstant: 40),
-            stackView.widthAnchor.constraint(equalToConstant: 200),
+            stackView.widthAnchor.constraint(equalToConstant: 190),
             
             label.centerYAnchor.constraint(equalTo: stackView.centerYAnchor),
             label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),

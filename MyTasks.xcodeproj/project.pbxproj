@@ -24,6 +24,7 @@
 		D47F716F27BC58B00012D0B8 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47F716E27BC58B00012D0B8 /* Font.swift */; };
 		D47F717327BC64000012D0B8 /* MyriadPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D47F717227BC64000012D0B8 /* MyriadPro-Regular.ttf */; };
 		D47F717527BC68740012D0B8 /* MyriadPro-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D47F717427BC68740012D0B8 /* MyriadPro-Bold.ttf */; };
+		D48D339727BFACC1008A0642 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48D339627BFACC1008A0642 /* CheckBox.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		D47F716E27BC58B00012D0B8 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		D47F717227BC64000012D0B8 /* MyriadPro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MyriadPro-Regular.ttf"; path = "../../../../../../../Downloads/MyriadPro/MyriadPro-Regular.ttf"; sourceTree = "<group>"; };
 		D47F717427BC68740012D0B8 /* MyriadPro-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MyriadPro-Bold.ttf"; path = "../../../../../../../Downloads/MyriadPro/MyriadPro-Bold.ttf"; sourceTree = "<group>"; };
+		D48D339627BFACC1008A0642 /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 				D44C52DA27B9C191009939C3 /* HomeView.swift */,
 				D44C52DC27B9C203009939C3 /* ProgressBarView.swift */,
 				D47F716927BC43700012D0B8 /* TaskCell.swift */,
+				D48D339627BFACC1008A0642 /* CheckBox.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 				D44C52D927B9C049009939C3 /* HomeVC.swift in Sources */,
 				D47F716D27BC47300012D0B8 /* DataHandler.swift in Sources */,
 				D47F716F27BC58B00012D0B8 /* Font.swift in Sources */,
+				D48D339727BFACC1008A0642 /* CheckBox.swift in Sources */,
 				D44C52B727B9B9DF009939C3 /* AppDelegate.swift in Sources */,
 				D44C52DB27B9C191009939C3 /* HomeView.swift in Sources */,
 				D44C52B927B9B9DF009939C3 /* SceneDelegate.swift in Sources */,
