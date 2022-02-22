@@ -94,10 +94,10 @@ final class TaskCell: UICollectionViewCell {
     private func setupStackView() {
         let daysDate = DataHandler.getCurrentWeek()
         let currentDay = DataHandler.getCurrenDay()
-        
+        let calendar = Calendar.current
         for index in 0...6 {
             let checkBox = CheckBox()
-            if daysDate[index] == currentDay {
+            if calendar.component(.day, from: daysDate[index]) == calendar.component(.day, from: currentDay)  {
                 checkBox.isActiv = false
             } else {
                 checkBox.isActiv = true

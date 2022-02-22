@@ -75,12 +75,15 @@ class HomeView: UIView {
         let daysDate = DataHandler.getCurrentWeek()
         let daysName = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"]
         let currentDay = DataHandler.getCurrenDay()
+        let calendar = Calendar.current
+//        print(calendar.component(.day, from: calendar.date(byAdding: .day, value: -1, to: date)!))
         
         for index in 0...6 {
             let label = UILabel()
-            label.text = String(daysDate[index]) + " " + daysName[index]
+            let day = calendar.component(.day, from: calendar.date(byAdding: .day, value: -1, to: daysDate[index])!)
+            label.text = String(day) + " " + daysName[index]
             label.numberOfLines = 2
-            if daysDate[index] == currentDay {
+            if calendar.component(.day, from: daysDate[index]) == calendar.component(.day, from: currentDay) {
                 label.textColor = .activeText
                 label.font = UIFont(name: Font.myriadProBold, size: 16)
             } else {

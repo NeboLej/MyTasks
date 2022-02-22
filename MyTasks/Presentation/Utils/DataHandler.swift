@@ -2,25 +2,32 @@ import Foundation
 
 class DataHandler {
     
-    static func getCurrentWeek() -> [Int] {
+    static func getCurrentWeek() -> [Date] {
         let date = Date()
         let calendar = Calendar.current
-        var week: [Int] = []
-        let weekDay = calendar.component(.weekday, from: date) - 1
+        var week: [Date] = []
+        let weekDay = calendar.component(.weekday, from: date) - 2
 
         for dayt in 1...7 {
             let data = calendar.date(byAdding: .day, value: dayt-weekDay, to: date)!
-            let day = calendar.component(.day, from: data)
-            week.append(day)
+//            let day = calendar.component(.day, from: data)
+            week.append(data)
         }
-        print(week)
+        week.forEach { date in
+            print(calendar.component(.day, from: calendar.date(byAdding: .day, value: -1, to: date)!))
+        }
         return week
     }
     
-    static func getCurrenDay() -> Int {
-        let date = Date()
+    static func getCurrenDay() -> Date {
+        return Date()
+    }
+    
+    
+    static func getDate() {
+        let date = NSDate()
         let calendar = Calendar.current
-        return calendar.component(.day, from: date)
+        
     }
  
 }
