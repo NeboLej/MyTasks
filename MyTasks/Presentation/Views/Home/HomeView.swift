@@ -74,13 +74,16 @@ class HomeView: UIView {
     private func fillStackView() {
         let daysDate = DataHandler.getCurrentWeek()
         let daysName = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"]
-        let currentDay = DataHandler.getCurrenDay()
-        
+        let currentDay = DataHandler.getCurrentDay()
+        let calendar = Calendar.current
+
         for index in 0...6 {
             let label = UILabel()
-            label.text = String(daysDate[index]) + " " + daysName[index]
+
+            let day = calendar.component(.day, from: daysDate[index])
+            label.text = String(day) + " " + daysName[index]
             label.numberOfLines = 2
-            if daysDate[index] == currentDay {
+            if day == calendar.component(.day, from: currentDay) {
                 label.textColor = .activeText
                 label.font = UIFont(name: Font.myriadProBold, size: 16)
             } else {
@@ -106,7 +109,7 @@ class HomeView: UIView {
             stackView.topAnchor.constraint(equalTo: separator.bottomAnchor, constant: 10),
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             stackView.heightAnchor.constraint(equalToConstant: 40),
-            stackView.widthAnchor.constraint(equalToConstant: 200),
+            stackView.widthAnchor.constraint(equalToConstant: 190),
             
             label.centerYAnchor.constraint(equalTo: stackView.centerYAnchor),
             label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),

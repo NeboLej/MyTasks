@@ -27,6 +27,15 @@ final class TaskCell: UICollectionViewCell {
         background.translatesAutoresizingMaskIntoConstraints = false
         return background
     }()
+    
+    lazy var stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        
+        stackView.spacing = 15
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
 
     
     lazy var circle: UIView = {
@@ -47,6 +56,7 @@ final class TaskCell: UICollectionViewCell {
         setupView()
         addSubviews()
         initConstraints()
+        setupStackView()
     }
     
     func setupCell(taskModel: TaskModel, size: CGSize) {
@@ -73,10 +83,27 @@ final class TaskCell: UICollectionViewCell {
     }
     
     private func addSubviews() {
+        
         addSubview(background)
         addSubview(circle)
         addSubview(taskName)
+        addSubview(stackView)
         addSubview(procent)
+    }
+    
+    private func setupStackView() {
+        let daysDate = DataHandler.getCurrentWeek()
+        let currentDay = DataHandler.getCurrentDay()
+        let calendar = Calendar.current
+        for index in 0...6 {
+            let checkBox = CheckBox()
+            if calendar.component(.day, from: daysDate[index]) == calendar.component(.day, from: currentDay)  {
+                checkBox.isActiv = false
+            } else {
+                checkBox.isActiv = true
+            }
+            stackView.addArrangedSubview(checkBox)
+        }
     }
     
     private func initConstraints() {
@@ -95,7 +122,12 @@ final class TaskCell: UICollectionViewCell {
             procent.topAnchor.constraint(equalTo: taskName.bottomAnchor, constant: 5),
             procent.leadingAnchor.constraint(equalTo: taskName.leadingAnchor, constant: 0),
             procent.heightAnchor.constraint(equalToConstant: 25),
-            procent.widthAnchor.constraint(equalToConstant: 100)
+            procent.widthAnchor.constraint(equalToConstant: 100),
+            
+            stackView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            stackView.heightAnchor.constraint(equalToConstant: 25),
+            stackView.widthAnchor.constraint(equalToConstant: 185),
         ])
     }
     
@@ -105,7 +137,7 @@ final class TaskCell: UICollectionViewCell {
     
     private func getDiameter(size: CGSize) -> CGFloat {
         let diameter = 2*(sqrt(pow(size.width, 2) + pow(size.height, 2)) / 100.0)*CGFloat(procentTest)
-        print(diameter)
+//        print(diameter)
         return diameter
     }
     
