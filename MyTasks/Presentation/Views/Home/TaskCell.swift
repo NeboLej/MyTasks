@@ -30,9 +30,16 @@ final class TaskCell: UICollectionViewCell {
     lazy var stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
-        
         stackView.spacing = 15
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        for index in 0...6 {
+            let checkBox = CheckBox()
+            checkBox.isActiv = false
+            checkBox.index = index
+            checkBox.addTarget(self, action: #selector(clickCheckBox), for: .touchUpInside)
+            stackView.addArrangedSubview(checkBox)
+        }
         return stackView
     }()
     
@@ -43,7 +50,7 @@ final class TaskCell: UICollectionViewCell {
     }()
     
     private lazy var weekDates = DataHandler.getCurrentWeek()
-    private var taskDates: [Date]!
+    var taskDates: [Date]!
     private var periodicity: Int!
     
     
@@ -51,18 +58,27 @@ final class TaskCell: UICollectionViewCell {
     static let cellId = "TaskCell"
     lazy var procentTest = getProcentTask()
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        taskName.text = nil
+        taskDates = nil
+        
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: .zero)
-        createProgress()
         setupView()
         addSubviews()
         initConstraints()
-        setupStackView()
     }
     
     func setupCell(taskModel: TaskModel, size: CGSize) {
         backgroundColor = .clear
-        taskDates = taskModel.dates
         periodicity = taskModel.periodicity
         background.backgroundColor = taskModel.color
         circle.backgroundColor = taskModel.color
@@ -90,8 +106,9 @@ final class TaskCell: UICollectionViewCell {
         addSubview(background)
         addSubview(circle)
         addSubview(taskName)
-        addSubview(stackView)
+        
         addSubview(procent)
+        addSubview(stackView)
     }
     
     private func getProcentTask() -> Int {
@@ -111,26 +128,35 @@ final class TaskCell: UICollectionViewCell {
         return diameter
     }
     
-    private func createProgress() {
-        let view = UIView(frame: CGRect(x: frame.minX, y: frame.minY, width: 300, height: 300))
-        view.backgroundColor = .red
-        view.alpha = 0.2
-        view.mask = self
-    }
     
-    
-    private func setupStackView() {
-        let currentDay = DataHandler.getCurrentDay()
-        let calendar = Calendar.current
-        for index in 0...6 {
-            let checkBox = CheckBox()
-            if calendar.component(.day, from: weekDates[index]) == calendar.component(.day, from: currentDay)  {
-                checkBox.isActiv = false
-            } else {
-                checkBox.isActiv = true
+    func loadBox() {
+        stackView.arrangedSubviews.forEach { view in
+            let box = view as! CheckBox
+            for taskDate in taskDates {
+                if weekDates[box.index] == taskDate {
+                    box.isActiv = true
+                }
             }
-            stackView.addArrangedSubview(checkBox)
         }
+    }
+  
+    @objc private func clickCheckBox(sender: UIButton) {
+        let box = sender as! CheckBox
+        if box.isActiv {
+            var index = 0
+            for taskDate in taskDates {
+                if taskDate == weekDates[box.index] {
+                    break
+                }
+                index += 1
+            }
+            taskDates.remove(at: index)
+            
+        } else {
+            taskDates.append(weekDates[box.index])
+        }
+        box.isActiv.toggle()
+        print(taskDates)
     }
     
     
