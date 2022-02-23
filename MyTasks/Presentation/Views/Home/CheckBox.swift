@@ -5,8 +5,8 @@ class CheckBox: UIButton {
     
     var isActiv: Bool = false {
         didSet {
-            if isActiv {setImage(UIImage(named: "checkBoxTrue"), for: .normal)}
-            else {setImage(UIImage(named: "checkBoxFalse"), for: .normal)}
+            if isActiv {setImage(UIImage(named: "cbTrue"), for: .normal)}
+            else {setImage(UIImage(named: "cbFalse"), for: .normal)}
         }
     }
     

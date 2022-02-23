@@ -30,7 +30,7 @@ final class TaskCell: UICollectionViewCell {
     lazy var stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
-        stackView.spacing = 15
+        stackView.spacing = 10
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
         for index in 0...6 {
