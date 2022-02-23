@@ -30,9 +30,16 @@ final class TaskCell: UICollectionViewCell {
     lazy var stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
-        
         stackView.spacing = 15
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        for index in 0...6 {
+            let checkBox = CheckBox()
+            checkBox.isActiv = false
+            checkBox.index = index
+            checkBox.addTarget(self, action: #selector(clickCheckBox), for: .touchUpInside)
+            stackView.addArrangedSubview(checkBox)
+        }
         return stackView
     }()
     
@@ -43,7 +50,7 @@ final class TaskCell: UICollectionViewCell {
     }()
     
     private lazy var weekDates = DataHandler.getCurrentWeek()
-    private var taskDates: [Date]!
+    var taskDates: [Date]!
     private var periodicity: Int!
     
     
@@ -51,30 +58,37 @@ final class TaskCell: UICollectionViewCell {
     static let cellId = "TaskCell"
     lazy var procentTest = getProcentTask()
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        taskName.text = nil
+        taskDates = nil
+        
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: .zero)
         setupView()
         addSubviews()
         initConstraints()
-        
     }
     
     func setupCell(taskModel: TaskModel, size: CGSize) {
         backgroundColor = .clear
-        taskDates = taskModel.dates
         periodicity = taskModel.periodicity
         background.backgroundColor = taskModel.color
         circle.backgroundColor = taskModel.color
         taskName.text = taskModel.name
         procent.text = String(procentTest) + "%"
-        setupStackView()
         
         let circleSize = getDiameter(size: size)
         circle.frame = .init(x: 0, y: 0, width: circleSize, height: circleSize)
         circle.center = .init(x: 0, y: 0)
         circle.layer.cornerRadius = circleSize/2
-        
-
     }
     
     required init?(coder: NSCoder) {
@@ -115,28 +129,20 @@ final class TaskCell: UICollectionViewCell {
     }
     
     
-    
-    func setupStackView() {
-        for index in 0...6 {
-            let checkBox = CheckBox()
-            checkBox.isActiv = false
+    func loadBox() {
+        stackView.arrangedSubviews.forEach { view in
+            let box = view as! CheckBox
             for taskDate in taskDates {
-                if weekDates[index] == taskDate {
-                    checkBox.isActiv = true
+                if weekDates[box.index] == taskDate {
+                    box.isActiv = true
                 }
             }
-            checkBox.index = index
-            checkBox.addTarget(self, action: #selector(clickCheckBox), for: .touchUpInside)
-            
-            stackView.addArrangedSubview(checkBox)
         }
     }
-    
+  
     @objc private func clickCheckBox(sender: UIButton) {
         let box = sender as! CheckBox
         if box.isActiv {
-            taskDates.append(weekDates[box.index])
-        } else {
             var index = 0
             for taskDate in taskDates {
                 if taskDate == weekDates[box.index] {
@@ -145,6 +151,9 @@ final class TaskCell: UICollectionViewCell {
                 index += 1
             }
             taskDates.remove(at: index)
+            
+        } else {
+            taskDates.append(weekDates[box.index])
         }
         box.isActiv.toggle()
         print(taskDates)

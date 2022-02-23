@@ -45,8 +45,9 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
         
         
 //        print(cell.bounds)
+        cell.taskDates = homeVM.taskList[index].dates
         cell.setupCell(taskModel: homeVM.taskList[index], size: CGSize(width: cell.bounds.width, height: cell.bounds.height))
-        cell.taskName.text = homeVM.taskList[index].name
+        cell.loadBox()
         
         return cell
     }
