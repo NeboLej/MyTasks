@@ -93,7 +93,7 @@ final class TaskCell: UICollectionViewCell {
     
     private func setupStackView() {
         let daysDate = DataHandler.getCurrentWeek()
-        let currentDay = DataHandler.getCurrenDay()
+        let currentDay = DataHandler.getCurrentDay()
         let calendar = Calendar.current
         for index in 0...6 {
             let checkBox = CheckBox()
@@ -137,7 +137,7 @@ final class TaskCell: UICollectionViewCell {
     
     private func getDiameter(size: CGSize) -> CGFloat {
         let diameter = 2*(sqrt(pow(size.width, 2) + pow(size.height, 2)) / 100.0)*CGFloat(procentTest)
-        print(diameter)
+//        print(diameter)
         return diameter
     }
     

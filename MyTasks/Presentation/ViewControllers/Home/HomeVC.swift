@@ -9,7 +9,8 @@ final class HomeVC: UIViewController {
     
     override func loadView() {
         view = homeView
-//        DataHandler.getCurrentWeek()
+        print(DataHandler.getCurrentWeek())
+        print(DataHandler.getCurrentDay())
         sutupDelegates()
     }
     
