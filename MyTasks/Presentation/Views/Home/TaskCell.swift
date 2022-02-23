@@ -53,11 +53,10 @@ final class TaskCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
-        createProgress()
         setupView()
         addSubviews()
         initConstraints()
-        setupStackView()
+        
     }
     
     func setupCell(taskModel: TaskModel, size: CGSize) {
@@ -68,11 +67,14 @@ final class TaskCell: UICollectionViewCell {
         circle.backgroundColor = taskModel.color
         taskName.text = taskModel.name
         procent.text = String(procentTest) + "%"
+        setupStackView()
         
         let circleSize = getDiameter(size: size)
         circle.frame = .init(x: 0, y: 0, width: circleSize, height: circleSize)
         circle.center = .init(x: 0, y: 0)
         circle.layer.cornerRadius = circleSize/2
+        
+
     }
     
     required init?(coder: NSCoder) {
@@ -90,8 +92,9 @@ final class TaskCell: UICollectionViewCell {
         addSubview(background)
         addSubview(circle)
         addSubview(taskName)
-        addSubview(stackView)
+        
         addSubview(procent)
+        addSubview(stackView)
     }
     
     private func getProcentTask() -> Int {
@@ -111,26 +114,40 @@ final class TaskCell: UICollectionViewCell {
         return diameter
     }
     
-    private func createProgress() {
-        let view = UIView(frame: CGRect(x: frame.minX, y: frame.minY, width: 300, height: 300))
-        view.backgroundColor = .red
-        view.alpha = 0.2
-        view.mask = self
-    }
     
     
-    private func setupStackView() {
-        let currentDay = DataHandler.getCurrentDay()
-        let calendar = Calendar.current
+    func setupStackView() {
         for index in 0...6 {
             let checkBox = CheckBox()
-            if calendar.component(.day, from: weekDates[index]) == calendar.component(.day, from: currentDay)  {
-                checkBox.isActiv = false
-            } else {
-                checkBox.isActiv = true
+            checkBox.isActiv = false
+            for taskDate in taskDates {
+                if weekDates[index] == taskDate {
+                    checkBox.isActiv = true
+                }
             }
+            checkBox.index = index
+            checkBox.addTarget(self, action: #selector(clickCheckBox), for: .touchUpInside)
+            
             stackView.addArrangedSubview(checkBox)
         }
+    }
+    
+    @objc private func clickCheckBox(sender: UIButton) {
+        let box = sender as! CheckBox
+        if box.isActiv {
+            taskDates.append(weekDates[box.index])
+        } else {
+            var index = 0
+            for taskDate in taskDates {
+                if taskDate == weekDates[box.index] {
+                    break
+                }
+                index += 1
+            }
+            taskDates.remove(at: index)
+        }
+        box.isActiv.toggle()
+        print(taskDates)
     }
     
     
