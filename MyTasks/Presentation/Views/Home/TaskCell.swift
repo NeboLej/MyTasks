@@ -52,11 +52,9 @@ final class TaskCell: UICollectionViewCell {
     private lazy var weekDates = DataHandler.getCurrentWeek()
     var taskDates: [Date]!
     private var periodicity: Int!
-    
-    
-    
+    private var size: CGSize!
     static let cellId = "TaskCell"
-    lazy var procentTest = getProcentTask()
+    lazy var percentTask = getPercentTask()
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -79,11 +77,12 @@ final class TaskCell: UICollectionViewCell {
     
     func setupCell(taskModel: TaskModel, size: CGSize) {
         backgroundColor = .clear
+        self.size = size
         periodicity = taskModel.periodicity
         background.backgroundColor = taskModel.color
         circle.backgroundColor = taskModel.color
         taskName.text = taskModel.name
-        procent.text = String(procentTest) + "%"
+        procent.text = String(percentTask) + "%"
         
         let circleSize = getDiameter(size: size)
         circle.frame = .init(x: 0, y: 0, width: circleSize, height: circleSize)
@@ -111,7 +110,7 @@ final class TaskCell: UICollectionViewCell {
         addSubview(stackView)
     }
     
-    private func getProcentTask() -> Int {
+    private func getPercentTask() -> Int {
         var count = 0
         for date in weekDates {
             for dateTask in taskDates {
@@ -124,7 +123,7 @@ final class TaskCell: UICollectionViewCell {
     }
     
     private func getDiameter(size: CGSize) -> CGFloat {
-        let diameter = 2*(sqrt(pow(size.width, 2) + pow(size.height, 2)) / 100.0)*CGFloat(procentTest)
+        let diameter = 2*(sqrt(pow(size.width, 2) + pow(size.height, 2)) / 100.0)*CGFloat(percentTask)
         return diameter
     }
     
@@ -157,6 +156,19 @@ final class TaskCell: UICollectionViewCell {
         }
         box.isActiv.toggle()
         print(taskDates)
+        animationTask()
+    }
+    
+    private func animationTask() {
+        self.percentTask = getPercentTask()
+        let circleSize = getDiameter(size: size)
+
+        UIView.animate(withDuration: 0.4, delay: 0, options: [.curveEaseOut]) {
+            self.procent.text = String(self.percentTask) + "%"
+            self.circle.frame = .init(x: 0, y: 0, width: circleSize, height: circleSize)
+            self.circle.center = .init(x: 0, y: 0)
+            self.circle.layer.cornerRadius = circleSize/2
+        }
     }
     
     
