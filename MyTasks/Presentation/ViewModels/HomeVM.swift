@@ -2,8 +2,8 @@ import Foundation
 
 class HomeVM {
     
-    var taskList: [TaskModel] = [
-        .init(name: "Читать", color: .systemRed, periodicity: 3, dates: []),
+    lazy var taskList: [TaskModel] = [
+        .init(name: "Читать", color: .systemRed, periodicity: 7, dates: testDate()),
         .init(name: "Фыр-Фыр", color: .systemTeal, periodicity: 1, dates: []),
         .init(name: "Бегать по утрам", color: .systemYellow, periodicity: 2, dates: []),
         .init(name: "Читать", color: .systemPink, periodicity: 3, dates: []),
@@ -23,4 +23,20 @@ class HomeVM {
         .init(name: "Читать", color: .systemBlue, periodicity: 3, dates: []),
         .init(name: "Фыр-Фыр", color: .systemTeal, periodicity: 1, dates: []),
     ]
+    
+    private func testDate() -> [Date] {
+        var week: [Date] = []
+        let dateNow = Date()
+        let calendar = Calendar.current
+        let weekDay = calendar.component(.weekday, from: dateNow) - 1
+        
+        for day in 1...4  {
+            let date = calendar.date(byAdding: .day, value: day-weekDay, to: dateNow)
+            var dateComponents = calendar.dateComponents([.year, .month, .day, .hour], from: date!)
+            dateComponents.hour = 12
+            week.append(calendar.date(from: dateComponents)!)
+        }
+        
+        return week
+    }
 }

@@ -13,7 +13,6 @@ final class TaskCell: UICollectionViewCell {
     
     lazy var procent: UILabel = {
         let label = UILabel()
-        label.text = String(getProcentTask()) + "%"
         label.font = UIFont(name: Font.myriadProRegular, size: 22)
         label.textColor = .baseText
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -36,14 +35,16 @@ final class TaskCell: UICollectionViewCell {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
-
+    
     
     lazy var circle: UIView = {
         let circle = UIView()
-//        circle.layer.shadowColor = UIColor.red.cgColor
-//        circle.layer.shadowRadius = 100
         return circle
     }()
+    
+    private lazy var weekDates = DataHandler.getCurrentWeek()
+    private var taskDates: [Date]!
+    private var periodicity: Int!
     
     
     
@@ -61,6 +62,8 @@ final class TaskCell: UICollectionViewCell {
     
     func setupCell(taskModel: TaskModel, size: CGSize) {
         backgroundColor = .clear
+        taskDates = taskModel.dates
+        periodicity = taskModel.periodicity
         background.backgroundColor = taskModel.color
         circle.backgroundColor = taskModel.color
         taskName.text = taskModel.name
@@ -91,13 +94,37 @@ final class TaskCell: UICollectionViewCell {
         addSubview(procent)
     }
     
+    private func getProcentTask() -> Int {
+        var count = 0
+        for date in weekDates {
+            for dateTask in taskDates {
+                if date == dateTask {count += 1}
+            }
+        }
+        
+        let percent = (100.0 / Double(periodicity))*Double(count)
+        return Int(percent)
+    }
+    
+    private func getDiameter(size: CGSize) -> CGFloat {
+        let diameter = 2*(sqrt(pow(size.width, 2) + pow(size.height, 2)) / 100.0)*CGFloat(procentTest)
+        return diameter
+    }
+    
+    private func createProgress() {
+        let view = UIView(frame: CGRect(x: frame.minX, y: frame.minY, width: 300, height: 300))
+        view.backgroundColor = .red
+        view.alpha = 0.2
+        view.mask = self
+    }
+    
+    
     private func setupStackView() {
-        let daysDate = DataHandler.getCurrentWeek()
         let currentDay = DataHandler.getCurrentDay()
         let calendar = Calendar.current
         for index in 0...6 {
             let checkBox = CheckBox()
-            if calendar.component(.day, from: daysDate[index]) == calendar.component(.day, from: currentDay)  {
+            if calendar.component(.day, from: weekDates[index]) == calendar.component(.day, from: currentDay)  {
                 checkBox.isActiv = false
             } else {
                 checkBox.isActiv = true
@@ -105,6 +132,7 @@ final class TaskCell: UICollectionViewCell {
             stackView.addArrangedSubview(checkBox)
         }
     }
+    
     
     private func initConstraints() {
         NSLayoutConstraint.activate([
@@ -131,22 +159,5 @@ final class TaskCell: UICollectionViewCell {
         ])
     }
     
-    private func getProcentTask() -> Int {
-        return Int.random(in: 1...100)
-    }
-    
-    private func getDiameter(size: CGSize) -> CGFloat {
-        let diameter = 2*(sqrt(pow(size.width, 2) + pow(size.height, 2)) / 100.0)*CGFloat(procentTest)
-//        print(diameter)
-        return diameter
-    }
-    
-    
-    private func createProgress() {
-        let view = UIView(frame: CGRect(x: frame.minX, y: frame.minY, width: 300, height: 300))
-        view.backgroundColor = .red
-        view.alpha = 0.2
-        view.mask = self
-    }
     
 }
