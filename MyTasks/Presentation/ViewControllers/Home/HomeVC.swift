@@ -9,9 +9,6 @@ final class HomeVC: UIViewController {
     
     override func loadView() {
         view = homeView
-        print(DataHandler.getCurrentWeek())
-        print(DataHandler.getCurrentDay())
-        sutupDelegates()
     }
     
     override func viewDidLoad() {
@@ -20,7 +17,10 @@ final class HomeVC: UIViewController {
     
     init(viewModel: HomeVM) {
         self.homeVM = viewModel
-        super.init(nibName: nil, bundle: nil)  
+        super.init(nibName: nil, bundle: nil)
+        setupTargets()
+        sutupDelegates()
+   
     }
     
     required init?(coder: NSCoder) {
@@ -30,6 +30,19 @@ final class HomeVC: UIViewController {
     private func sutupDelegates() {
         homeView.tasksCollectionView.delegate = self
         homeView.tasksCollectionView.dataSource = self
+    }
+    
+    private func setupTargets() {
+        homeView.addButton.addTarget(self, action: #selector(tapAddButton), for: .touchUpInside)
+    }
+    
+    @objc func tapAddButton() {
+//        let navigationControllet = UINavigationController()
+        let vc = AddTaskVC()
+        print("add")
+        self.navigationController?.pushViewController(vc, animated: true)
+//        self.navigationController?.pushViewController(vc, animated:true)
+//        show(vc, sender: .none)
     }
     
 }
@@ -56,5 +69,9 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
         CGSize(width: collectionView.frame.width, height: 80)
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(indexPath.item)
+    }
+
     
 }
