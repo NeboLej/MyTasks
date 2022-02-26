@@ -23,6 +23,7 @@ class AddTaskView: UIView {
         let button = UIButton(type: .system)
         button.setTitle("Сохранить", for: .normal)
         button.titleLabel?.textColor = .white //TODO: fix
+        button.isEnabled = false
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -113,7 +114,6 @@ class AddTaskView: UIView {
         return button
     }()
     
-    
     init() {
         super.init(frame: .zero)
         setupView()
@@ -125,6 +125,9 @@ class AddTaskView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit {
+        print("AddTaskView - deinit")
+    }
     
     private func setupView() {
         backgroundColor = .background

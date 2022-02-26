@@ -106,7 +106,7 @@ class HomeView: UIView {
     
     private func initConstraints() {
         NSLayoutConstraint.activate([
-            addButton.topAnchor.constraint(equalTo: topAnchor, constant: 60),
+            addButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: -10),
             addButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             addButton.heightAnchor.constraint(equalToConstant: 50),
             addButton.heightAnchor.constraint(equalToConstant: 50),

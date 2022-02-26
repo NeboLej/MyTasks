@@ -1,6 +1,11 @@
 import UIKit
 
-final class HomeVC: UIViewController {
+final class HomeVC: UIViewController, VCDelegate {
+    
+    func reloadCollections(task: TaskModel) {
+        homeVM.taskList.append(task)
+        homeView.tasksCollectionView.reloadData()
+    }
     
     private let homeView = HomeView()
     private var homeVM: HomeVM
@@ -23,8 +28,16 @@ final class HomeVC: UIViewController {
    
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        print("viewDidAppear")
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    deinit {
+        print("HomeVC - deinit")
     }
     
     private func sutupDelegates() {
@@ -38,10 +51,12 @@ final class HomeVC: UIViewController {
     
     @objc func tapAddButton() {
         let vc = AddTaskVC()
-        print("add")
+        vc.delegate = self
         vc.modalPresentationStyle = .automatic
         present(vc, animated: true, completion: nil)
     }
+    
+    
     
 }
 
