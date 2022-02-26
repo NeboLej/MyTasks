@@ -55,9 +55,6 @@ final class HomeVC: UIViewController, VCDelegate {
         vc.modalPresentationStyle = .automatic
         present(vc, animated: true, completion: nil)
     }
-    
-    
-    
 }
 
 extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -68,9 +65,7 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TaskCell.cellId, for: indexPath) as! TaskCell
         let index = indexPath.item
-        
-        
-//        print(cell.bounds)
+
         cell.taskDates = homeVM.taskList[index].dates
         cell.setupCell(taskModel: homeVM.taskList[index], size: CGSize(width: cell.bounds.width, height: cell.bounds.height))
         cell.loadBox()
@@ -85,6 +80,4 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(indexPath.item)
     }
-
-    
 }
