@@ -6,7 +6,7 @@ class HomeView: UIView {
         let button = UIButton()
         button.setTitle("add", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .red
+//        button.backgroundColor = .red
         return button
     }()
     
@@ -106,7 +106,7 @@ class HomeView: UIView {
     
     private func initConstraints() {
         NSLayoutConstraint.activate([
-            addButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 0),
+            addButton.topAnchor.constraint(equalTo: topAnchor, constant: 60),
             addButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             addButton.heightAnchor.constraint(equalToConstant: 50),
             addButton.heightAnchor.constraint(equalToConstant: 50),
@@ -134,7 +134,7 @@ class HomeView: UIView {
             tasksCollectionView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 20),
             tasksCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             tasksCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            tasksCollectionView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -100)
+            tasksCollectionView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0)
         ])
     }
     

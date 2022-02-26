@@ -37,12 +37,10 @@ final class HomeVC: UIViewController {
     }
     
     @objc func tapAddButton() {
-//        let navigationControllet = UINavigationController()
         let vc = AddTaskVC()
         print("add")
-        self.navigationController?.pushViewController(vc, animated: true)
-//        self.navigationController?.pushViewController(vc, animated:true)
-//        show(vc, sender: .none)
+        vc.modalPresentationStyle = .automatic
+        present(vc, animated: true, completion: nil)
     }
     
 }
