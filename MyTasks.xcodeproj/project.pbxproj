@@ -25,6 +25,8 @@
 		D47F716D27BC47300012D0B8 /* DataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47F716C27BC47300012D0B8 /* DataHandler.swift */; };
 		D47F716F27BC58B00012D0B8 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47F716E27BC58B00012D0B8 /* Font.swift */; };
 		D48D339727BFACC1008A0642 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48D339627BFACC1008A0642 /* CheckBox.swift */; };
+		FA7F523827C97D07000B8B39 /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7F523727C97D07000B8B39 /* AddTaskView.swift */; };
+		FA7F523B27C986CF000B8B39 /* AddTaskVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7F523A27C986CF000B8B39 /* AddTaskVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +51,8 @@
 		D47F716C27BC47300012D0B8 /* DataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHandler.swift; sourceTree = "<group>"; };
 		D47F716E27BC58B00012D0B8 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		D48D339627BFACC1008A0642 /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
+		FA7F523727C97D07000B8B39 /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
+		FA7F523A27C986CF000B8B39 /* AddTaskVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +127,7 @@
 		D44C52CF27B9BAFC009939C3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FA7F523627C97CD2000B8B39 /* AddTask */,
 				D44C52D627B9C011009939C3 /* Home */,
 			);
 			path = Views;
@@ -131,6 +136,7 @@
 		D44C52D027B9BB12009939C3 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				FA7F523927C986BE000B8B39 /* AddTask */,
 				D44C52D727B9C02A009939C3 /* Home */,
 			);
 			path = ViewControllers;
@@ -198,6 +204,22 @@
 				D47F716E27BC58B00012D0B8 /* Font.swift */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		FA7F523627C97CD2000B8B39 /* AddTask */ = {
+			isa = PBXGroup;
+			children = (
+				FA7F523727C97D07000B8B39 /* AddTaskView.swift */,
+			);
+			path = AddTask;
+			sourceTree = "<group>";
+		};
+		FA7F523927C986BE000B8B39 /* AddTask */ = {
+			isa = PBXGroup;
+			children = (
+				FA7F523A27C986CF000B8B39 /* AddTaskVC.swift */,
+			);
+			path = AddTask;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -284,9 +306,11 @@
 				D47F716D27BC47300012D0B8 /* DataHandler.swift in Sources */,
 				D47F716F27BC58B00012D0B8 /* Font.swift in Sources */,
 				D48D339727BFACC1008A0642 /* CheckBox.swift in Sources */,
+				FA7F523B27C986CF000B8B39 /* AddTaskVC.swift in Sources */,
 				D44C52B727B9B9DF009939C3 /* AppDelegate.swift in Sources */,
 				D44C52DB27B9C191009939C3 /* HomeView.swift in Sources */,
 				D44C52B927B9B9DF009939C3 /* SceneDelegate.swift in Sources */,
+				FA7F523827C97D07000B8B39 /* AddTaskView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

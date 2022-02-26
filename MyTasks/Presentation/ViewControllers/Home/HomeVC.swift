@@ -1,6 +1,11 @@
 import UIKit
 
-final class HomeVC: UIViewController {
+final class HomeVC: UIViewController, VCDelegate {
+    
+    func reloadCollections(task: TaskModel) {
+        homeVM.taskList.append(task)
+        homeView.tasksCollectionView.reloadData()
+    }
     
     private let homeView = HomeView()
     private var homeVM: HomeVM
@@ -9,9 +14,6 @@ final class HomeVC: UIViewController {
     
     override func loadView() {
         view = homeView
-        print(DataHandler.getCurrentWeek())
-        print(DataHandler.getCurrentDay())
-        sutupDelegates()
     }
     
     override func viewDidLoad() {
@@ -20,17 +22,41 @@ final class HomeVC: UIViewController {
     
     init(viewModel: HomeVM) {
         self.homeVM = viewModel
-        super.init(nibName: nil, bundle: nil)  
+        super.init(nibName: nil, bundle: nil)
+        setupTargets()
+        sutupDelegates()
+   
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        print("viewDidAppear")
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit {
+        print("HomeVC - deinit")
+    }
+    
     private func sutupDelegates() {
         homeView.tasksCollectionView.delegate = self
         homeView.tasksCollectionView.dataSource = self
     }
+    
+    private func setupTargets() {
+        homeView.addButton.addTarget(self, action: #selector(tapAddButton), for: .touchUpInside)
+    }
+    
+    @objc func tapAddButton() {
+        let vc = AddTaskVC()
+        vc.delegate = self
+        vc.modalPresentationStyle = .automatic
+        present(vc, animated: true, completion: nil)
+    }
+    
+    
     
 }
 
@@ -56,5 +82,9 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
         CGSize(width: collectionView.frame.width, height: 80)
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(indexPath.item)
+    }
+
     
 }
