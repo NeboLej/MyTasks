@@ -16,12 +16,21 @@ class PalettePopUpView: UIView {
         return collectionView
     }()
     
+    lazy var backgroundView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .black
+        view.alpha = 0.5
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     let arrayColors: [UIColor] = [.systemPink, .systemRed, .systemGray, .systemYellow, .systemBlue, .systemGreen, .systemOrange, .systemIndigo, .systemPurple]
     
     init() {
         super.init(frame: .zero)
         setupView()
         addSubviews()
+        addAction()
         initConstraints()
     }
     
@@ -30,19 +39,39 @@ class PalettePopUpView: UIView {
     }
     
     private func setupView() {
-        
+        backgroundColor = .gray
+        translatesAutoresizingMaskIntoConstraints = false
+        isHidden = true
     }
     
     private func addSubviews() {
+        addSubview(backgroundView)
         addSubview(paletteCollection)
     }
     
+    private func addAction() {
+        let reconizer = UIGestureRecognizer()
+        reconizer.addTarget(self, action: #selector(tapBackground))
+        
+        backgroundView.addGestureRecognizer(reconizer)
+    }
+    
+    @objc func tapBackground() {
+        isHidden = true
+    }
+    
+    
     private func initConstraints() {
         NSLayoutConstraint.activate([
-            paletteCollection.topAnchor.constraint(equalTo: topAnchor),
-            paletteCollection.leadingAnchor.constraint(equalTo: leadingAnchor),
-            paletteCollection.trailingAnchor.constraint(equalTo: trailingAnchor),
-            paletteCollection.bottomAnchor.constraint(equalTo: bottomAnchor)
+            backgroundView.topAnchor.constraint(equalTo: topAnchor),
+            backgroundView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            backgroundView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            backgroundView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            
+            paletteCollection.centerXAnchor.constraint(equalTo: centerXAnchor),
+            paletteCollection.centerYAnchor.constraint(equalTo: centerYAnchor),
+            paletteCollection.heightAnchor.constraint(equalToConstant: 300),
+            paletteCollection.widthAnchor.constraint(equalToConstant: 200)
         ])
 
     }

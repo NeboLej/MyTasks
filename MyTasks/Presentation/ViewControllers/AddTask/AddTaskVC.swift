@@ -30,6 +30,7 @@ class AddTaskVC: UIViewController {
     private func addTargets() {
         taskView.saveButton.addTarget(self, action: #selector(tapSaveButton), for: .touchUpInside)
         taskView.cancelButton.addTarget(self, action: #selector(tapCancelButton), for: .touchUpInside)
+        taskView.colorButton.addTarget(self, action: #selector(tapColorButton), for: .touchUpInside)
     }
     
     private func addDelegates() {
@@ -48,6 +49,10 @@ class AddTaskVC: UIViewController {
     
     @objc private func tapCancelButton() {
         dismiss(animated: true)
+    }
+    
+    @objc private func tapColorButton() {
+        taskView.palettePopUpView.isHidden = false
     }
     
     func validation() {
