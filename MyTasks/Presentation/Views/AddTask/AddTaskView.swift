@@ -50,6 +50,7 @@ class AddTaskView: UIView {
         textField.tintColor = .white
         textField.font = UIFont(name: Font.myriadProRegular, size: 20)
         textField.textColor = .white
+        textField.restorationIdentifier = "name"
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -75,11 +76,22 @@ class AddTaskView: UIView {
     
     lazy var repetitionsLabel: UILabel = {
         let label = UILabel()
-        label.text = "Повтор в неделю"
+        label.text = "Повторов в неделю"
         label.textColor = .white
         label.font = UIFont(name: Font.myriadProRegular, size: 18)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
+    }()
+    
+    lazy var periodTextField: UITextField = {
+       let textField = UITextField()
+        textField.text = "3"
+        textField.textColor = .white
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.restorationIdentifier = "period"
+        textField.textAlignment = .center
+        textField.layer.cornerRadius = 5
+        return textField
     }()
     
     lazy var colorLabel: UILabel = {
@@ -135,6 +147,7 @@ class AddTaskView: UIView {
         let color = UIColor(displayP3Red: CGFloat.random(in: 0...1 ), green: CGFloat.random(in: 0...1 ), blue: CGFloat.random(in: 0...1 ), alpha: 1)
         colorButton.backgroundColor = color
         headView.backgroundColor = color
+        periodTextField.backgroundColor = color
     }
     
     private func addSubviews() {
@@ -147,6 +160,7 @@ class AddTaskView: UIView {
         addSubview(discriptionTextField)
         addSubview(separator2)
         addSubview(repetitionsLabel)
+        addSubview(periodTextField)
         addSubview(colorLabel)
         addSubview(separator3)
         addSubview(separator4)
@@ -201,6 +215,11 @@ class AddTaskView: UIView {
             repetitionsLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             repetitionsLabel.widthAnchor.constraint(equalToConstant: 180),
             repetitionsLabel.heightAnchor.constraint(equalToConstant: 20),
+            
+            periodTextField.topAnchor.constraint(equalTo: separator2.bottomAnchor, constant: 20),
+            periodTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            periodTextField.widthAnchor.constraint(equalToConstant: 40),
+            periodTextField.heightAnchor.constraint(equalToConstant: 20),
             
             separator3.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             separator3.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
