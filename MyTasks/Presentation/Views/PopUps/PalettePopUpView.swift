@@ -18,6 +18,7 @@ class PalettePopUpView: UIView {
     
     lazy var backgroundView: UIView = {
         let view = UIView()
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapBackground)))
         view.backgroundColor = .black
         view.alpha = 0.5
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -39,7 +40,6 @@ class PalettePopUpView: UIView {
     }
     
     private func setupView() {
-        backgroundColor = .gray
         translatesAutoresizingMaskIntoConstraints = false
         isHidden = true
     }
@@ -59,8 +59,7 @@ class PalettePopUpView: UIView {
     @objc func tapBackground() {
         isHidden = true
     }
-    
-    
+  
     private func initConstraints() {
         NSLayoutConstraint.activate([
             backgroundView.topAnchor.constraint(equalTo: topAnchor),
@@ -86,9 +85,7 @@ extension PalettePopUpView: UICollectionViewDelegate, UICollectionViewDataSource
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "palette", for: indexPath)
         cell.backgroundColor = arrayColors[indexPath.item]
         return cell
-    }
-    
-    
+    }   
 }
 
 
