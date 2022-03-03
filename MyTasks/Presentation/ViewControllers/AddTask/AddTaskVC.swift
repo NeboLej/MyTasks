@@ -53,6 +53,11 @@ class AddTaskVC: UIViewController {
     
     @objc private func tapColorButton() {
         taskView.palettePopUpView.isHidden = false
+        taskView.palettePopUpView.setup { [weak self] in
+            self?.taskView.headView.backgroundColor = self?.taskView.palettePopUpView.celectColor
+            self?.taskView.colorButton.backgroundColor = self?.taskView.palettePopUpView.celectColor
+            self?.taskView.periodTextField.backgroundColor = self?.taskView.palettePopUpView.celectColor
+        }
     }
     
     func validation() {
