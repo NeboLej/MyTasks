@@ -126,6 +126,8 @@ class AddTaskView: UIView {
         return button
     }()
     
+    var palettePopUpView = PalettePopUpView()
+    
     init() {
         super.init(frame: .zero)
         setupView()
@@ -144,7 +146,7 @@ class AddTaskView: UIView {
     private func setupView() {
         backgroundColor = .background
         
-        let color = UIColor(displayP3Red: CGFloat.random(in: 0...1 ), green: CGFloat.random(in: 0...1 ), blue: CGFloat.random(in: 0...1 ), alpha: 1)
+        let color = palettePopUpView.celectColor
         colorButton.backgroundColor = color
         headView.backgroundColor = color
         periodTextField.backgroundColor = color
@@ -165,6 +167,7 @@ class AddTaskView: UIView {
         addSubview(separator3)
         addSubview(separator4)
         addSubview(colorButton)
+        addSubview(palettePopUpView)
         
     }
     
@@ -240,6 +243,12 @@ class AddTaskView: UIView {
             separator4.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             separator4.topAnchor.constraint(equalTo: colorLabel.bottomAnchor, constant: 3),
             separator4.heightAnchor.constraint(equalToConstant: 1),
+            
+            palettePopUpView.topAnchor.constraint(equalTo: topAnchor),
+            palettePopUpView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            palettePopUpView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            palettePopUpView.bottomAnchor.constraint(equalTo: bottomAnchor)
+
   
         ])
         
