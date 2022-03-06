@@ -2,10 +2,7 @@ import UIKit
 
 final class HomeVC: UIViewController, VCDelegate {
     
-    func reloadCollections(task: TaskModel) {
-        homeVM.taskList.append(task)
-        homeView.tasksCollectionView.reloadData()
-    }
+
     
     private let homeView = HomeView()
     private var homeVM: HomeVM
@@ -40,6 +37,11 @@ final class HomeVC: UIViewController, VCDelegate {
         print("HomeVC - deinit")
     }
     
+    func reloadCollections(task: TaskModel) {
+        homeVM.taskList.append(task)
+        homeView.tasksCollectionView.reloadData()
+    }
+    
     private func sutupDelegates() {
         homeView.tasksCollectionView.delegate = self
         homeView.tasksCollectionView.dataSource = self
@@ -66,8 +68,7 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TaskCell.cellId, for: indexPath) as! TaskCell
         let index = indexPath.item
 
-        cell.taskDates = homeVM.taskList[index].dates
-        cell.setupCell(taskModel: homeVM.taskList[index], size: CGSize(width: cell.bounds.width, height: cell.bounds.height))
+        cell.setupCell(vm: homeVM, index: index, size: CGSize(width: cell.bounds.width, height: cell.bounds.height))
         cell.loadBox()
         
         return cell

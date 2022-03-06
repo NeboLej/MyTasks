@@ -2,7 +2,7 @@ import UIKit
 
 class PalettePopUpView: UIView {
     
-    lazy var celectColor: UIColor = arrayColors[Int.random(in: 0...arrayColors.count)]
+    lazy var celectColor: UIColor = arrayColors[Int.random(in: 0...arrayColors.count-1)]
     
     lazy var paletteCollection: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
