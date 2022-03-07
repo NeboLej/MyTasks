@@ -30,6 +30,7 @@
 		FAECB4E327CAC3EB00964DDA /* PalettePopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAECB4E227CAC3EB00964DDA /* PalettePopUpView.swift */; };
 		FAF37C6027D5632D00B4D4C8 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF37C5F27D5632D00B4D4C8 /* UserDefaultsManager.swift */; };
 		FAF8F13727D63E540088E450 /* TaskInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF8F13627D63E540088E450 /* TaskInfoView.swift */; };
+		FAF8F13A27D6437F0088E450 /* TaskInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF8F13927D6437F0088E450 /* TaskInfoVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,7 @@
 		FAECB4E227CAC3EB00964DDA /* PalettePopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalettePopUpView.swift; sourceTree = "<group>"; };
 		FAF37C5F27D5632D00B4D4C8 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		FAF8F13627D63E540088E450 /* TaskInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInfoView.swift; sourceTree = "<group>"; };
+		FAF8F13927D6437F0088E450 /* TaskInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInfoVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 		D44C52D027B9BB12009939C3 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				FAF8F13827D643690088E450 /* TaskInfo */,
 				FA7F523927C986BE000B8B39 /* AddTask */,
 				D44C52D727B9C02A009939C3 /* Home */,
 			);
@@ -255,6 +258,14 @@
 			path = TaskInfo;
 			sourceTree = "<group>";
 		};
+		FAF8F13827D643690088E450 /* TaskInfo */ = {
+			isa = PBXGroup;
+			children = (
+				FAF8F13927D6437F0088E450 /* TaskInfoVC.swift */,
+			);
+			path = TaskInfo;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -331,6 +342,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D44C52DD27B9C203009939C3 /* ProgressBarView.swift in Sources */,
+				FAF8F13A27D6437F0088E450 /* TaskInfoVC.swift in Sources */,
 				D45FBA5A27BEEE82002EB9C8 /* HomeVM.swift in Sources */,
 				D47F716A27BC43700012D0B8 /* TaskCell.swift in Sources */,
 				D44C52E027B9C6C4009939C3 /* Color.swift in Sources */,

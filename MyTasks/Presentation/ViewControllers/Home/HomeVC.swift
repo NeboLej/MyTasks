@@ -80,5 +80,11 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(indexPath.item)
+        
+        let vc = TaskInfoVC(taskModel: homeVM.taskList[indexPath.item])
+//        vc.delegate = self
+        vc.modalPresentationStyle = .automatic
+        present(vc, animated: true, completion: nil)
+        
     }
 }

@@ -10,6 +10,15 @@ import UIKit
 
 class TaskInfoView: UIView {
     
+    
+    var isChangeTasks = false {
+        didSet {
+            saveButton.isHidden = !isChangeTasks
+            changeButton.isHidden = isChangeTasks
+            cancelButton.isEnabled = !isChangeTasks   
+        }
+    }
+    
     lazy var label: UILabel = {
         let label = UILabel()
         label.text = "Создать задачу"
@@ -31,7 +40,18 @@ class TaskInfoView: UIView {
         let button = UIButton(type: .system)
         button.setTitle("Изменить", for: .normal)
         button.titleLabel?.textColor = .white //TODO: fix
-        button.isEnabled = false
+        button.isHidden = false
+        //        button.isEnabled = false
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    lazy var saveButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Сохранить", for: .normal)
+        button.titleLabel?.textColor = .white //TODO: fix
+        button.isHidden = true
+        //        button.isEnabled = false
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -39,7 +59,7 @@ class TaskInfoView: UIView {
     
     lazy var headView: UIView = {
         let view = UIView()
-//        view.backgroundColor = .systemPink
+        //        view.backgroundColor = .systemPink
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -56,7 +76,7 @@ class TaskInfoView: UIView {
         let textField = UITextField()
         textField.backgroundColor = .clear
         textField.isUserInteractionEnabled = false
-//        textField.placeholder = "Название"
+        //        textField.placeholder = "Название"
         textField.tintColor = .white
         textField.font = UIFont(name: Font.myriadProRegular, size: 20)
         textField.textColor = .white
@@ -80,20 +100,22 @@ class TaskInfoView: UIView {
     }
     
     private func setupView() {
+        backgroundColor = .background
         headView.backgroundColor = taskModel.color
         label.text = taskModel.name
         nameTextField.text = taskModel.discription
     }
     
     private func addSubviews() {
-        
+        addSubview(headView)
         addSubview(label)
         addSubview(cancelButton)
         addSubview(changeButton)
+        addSubview(saveButton)
         addSubview(separator1)
         addSubview(nameTextField)
-        addSubview(headView)
-//        addSubview(label)
+        
+        //        addSubview(label)
         
         
     }
@@ -116,6 +138,11 @@ class TaskInfoView: UIView {
             changeButton.widthAnchor.constraint(equalToConstant: 100),
             changeButton.bottomAnchor.constraint(equalTo: label.bottomAnchor),
             
+            saveButton.topAnchor.constraint(equalTo: label.topAnchor),
+            saveButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            saveButton.widthAnchor.constraint(equalToConstant: 100),
+            saveButton.bottomAnchor.constraint(equalTo: label.bottomAnchor),
+            
             separator1.leadingAnchor.constraint(equalTo: leadingAnchor),
             separator1.trailingAnchor.constraint(equalTo: trailingAnchor),
             separator1.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 11),
@@ -130,7 +157,7 @@ class TaskInfoView: UIView {
             headView.leadingAnchor.constraint(equalTo: leadingAnchor),
             headView.trailingAnchor.constraint(equalTo: trailingAnchor),
             headView.bottomAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 15),
-
+            
             
         ])
         
