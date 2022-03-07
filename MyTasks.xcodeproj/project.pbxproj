@@ -29,6 +29,7 @@
 		FA7F523B27C986CF000B8B39 /* AddTaskVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7F523A27C986CF000B8B39 /* AddTaskVC.swift */; };
 		FAECB4E327CAC3EB00964DDA /* PalettePopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAECB4E227CAC3EB00964DDA /* PalettePopUpView.swift */; };
 		FAF37C6027D5632D00B4D4C8 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF37C5F27D5632D00B4D4C8 /* UserDefaultsManager.swift */; };
+		FAF8F13727D63E540088E450 /* TaskInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF8F13627D63E540088E450 /* TaskInfoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,7 @@
 		FA7F523A27C986CF000B8B39 /* AddTaskVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskVC.swift; sourceTree = "<group>"; };
 		FAECB4E227CAC3EB00964DDA /* PalettePopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalettePopUpView.swift; sourceTree = "<group>"; };
 		FAF37C5F27D5632D00B4D4C8 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		FAF8F13627D63E540088E450 /* TaskInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInfoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 		D44C52CF27B9BAFC009939C3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FAF8F13527D63E300088E450 /* TaskInfo */,
 				FAECB4E127CAC3BA00964DDA /* PopUps */,
 				FA7F523627C97CD2000B8B39 /* AddTask */,
 				D44C52D627B9C011009939C3 /* Home */,
@@ -244,6 +247,14 @@
 			path = Storage;
 			sourceTree = "<group>";
 		};
+		FAF8F13527D63E300088E450 /* TaskInfo */ = {
+			isa = PBXGroup;
+			children = (
+				FAF8F13627D63E540088E450 /* TaskInfoView.swift */,
+			);
+			path = TaskInfo;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -329,6 +340,7 @@
 				D47F716D27BC47300012D0B8 /* DataHandler.swift in Sources */,
 				FAECB4E327CAC3EB00964DDA /* PalettePopUpView.swift in Sources */,
 				D47F716F27BC58B00012D0B8 /* Font.swift in Sources */,
+				FAF8F13727D63E540088E450 /* TaskInfoView.swift in Sources */,
 				D48D339727BFACC1008A0642 /* CheckBox.swift in Sources */,
 				FA7F523B27C986CF000B8B39 /* AddTaskVC.swift in Sources */,
 				D44C52B727B9B9DF009939C3 /* AppDelegate.swift in Sources */,
