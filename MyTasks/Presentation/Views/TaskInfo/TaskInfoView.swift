@@ -72,17 +72,46 @@ class TaskInfoView: UIView {
         return view
     }()
     
-    lazy var nameTextField: UITextField = {
-        let textField = UITextField()
+    lazy var discriptionTextField: UITextView = {
+        let textField = UITextView()
         textField.backgroundColor = .clear
-        textField.isUserInteractionEnabled = false
+//        textField.isUserInteractionEnabled = false
         //        textField.placeholder = "Название"
         textField.tintColor = .white
-        textField.font = UIFont(name: Font.myriadProRegular, size: 20)
+        textField.font = UIFont(name: Font.myriadProRegular, size: 14)
         textField.textColor = .white
         textField.restorationIdentifier = "name"
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
+    }()
+    
+    lazy var periodLabel: UILabel = {
+        let label = UILabel()
+//        label.text = "7"
+        label.textColor = .white
+        label.font = UIFont(name: Font.myriadProBold, size: 70)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .right
+        return label
+    }()
+    
+    private lazy var periodNameLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Дней в неделю"
+        label.textColor = .white
+        label.font = UIFont(name: Font.myriadProRegular, size: 14)
+        label.numberOfLines = 2
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .left
+        return label
+    }()
+    
+    lazy var segmentedControl: UISegmentedControl = {
+        let sc = UISegmentedControl(items: ["Неделя", "Месяц", "Год", "С начала"])
+        sc.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .normal)
+        sc.selectedSegmentIndex = 0
+        sc.translatesAutoresizingMaskIntoConstraints = false
+        return sc
     }()
     
     var taskModel: TaskModel
@@ -103,7 +132,10 @@ class TaskInfoView: UIView {
         backgroundColor = .background
         headView.backgroundColor = taskModel.color
         label.text = taskModel.name
-        nameTextField.text = taskModel.discription
+        discriptionTextField.text = taskModel.discription
+        periodLabel.text = String(taskModel.periodicity)
+        segmentedControl.backgroundColor = taskModel.color.withAlphaComponent(0.5)
+        segmentedControl.selectedSegmentTintColor = taskModel.color
     }
     
     private func addSubviews() {
@@ -113,9 +145,11 @@ class TaskInfoView: UIView {
         addSubview(changeButton)
         addSubview(saveButton)
         addSubview(separator1)
-        addSubview(nameTextField)
+        addSubview(discriptionTextField)
+        addSubview(periodNameLabel)
+        addSubview(periodLabel)
         
-        //        addSubview(label)
+        addSubview(segmentedControl)
         
         
     }
@@ -148,16 +182,30 @@ class TaskInfoView: UIView {
             separator1.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 11),
             separator1.heightAnchor.constraint(equalToConstant: 1),
             
-            nameTextField.topAnchor.constraint(equalTo: separator1.bottomAnchor, constant: 25),
-            nameTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            nameTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            nameTextField.heightAnchor.constraint(equalToConstant: 25),
+            discriptionTextField.topAnchor.constraint(equalTo: separator1.bottomAnchor, constant: 25),
+            discriptionTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            discriptionTextField.trailingAnchor.constraint(equalTo: periodLabel.leadingAnchor, constant: -5),
+            discriptionTextField.heightAnchor.constraint(equalToConstant: 25),
+            
+            periodLabel.centerYAnchor.constraint(equalTo: discriptionTextField.centerYAnchor),
+            periodLabel.trailingAnchor.constraint(equalTo: periodNameLabel.leadingAnchor, constant: -5),
+            periodLabel.heightAnchor.constraint(equalToConstant: 70),
+            periodLabel.widthAnchor.constraint(equalToConstant: 60),
+            
+            periodNameLabel.centerYAnchor.constraint(equalTo: discriptionTextField.centerYAnchor),
+            periodNameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            periodNameLabel.heightAnchor.constraint(equalToConstant: 70),
+            periodNameLabel.widthAnchor.constraint(equalToConstant: 60),
             
             headView.topAnchor.constraint(equalTo: topAnchor),
             headView.leadingAnchor.constraint(equalTo: leadingAnchor),
             headView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            headView.bottomAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 15),
+            headView.bottomAnchor.constraint(equalTo: discriptionTextField.bottomAnchor, constant: 15),
             
+            segmentedControl.topAnchor.constraint(equalTo: headView.bottomAnchor, constant: 30),
+            segmentedControl.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 45),
+            segmentedControl.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -45),
+            segmentedControl.heightAnchor.constraint(equalToConstant: 32)
             
         ])
         
