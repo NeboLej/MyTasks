@@ -91,8 +91,9 @@ class HomeView: UIView {
             let label = UILabel()
 
             let day = calendar.component(.day, from: daysDate[index])
-            label.text = String(day) + " " + daysName[index]
+            label.text = String(day) + "  " + daysName[index]
             label.numberOfLines = 2
+            label.textAlignment = .center
             if day == calendar.component(.day, from: currentDay) {
                 label.textColor = .activeText
                 label.font = UIFont(name: Font.myriadProBold, size: 16)
@@ -114,7 +115,7 @@ class HomeView: UIView {
             progressBarView.topAnchor.constraint(equalTo: addButton.bottomAnchor, constant: 10),
             progressBarView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             progressBarView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            progressBarView.heightAnchor.constraint(equalToConstant: 65),
+            progressBarView.heightAnchor.constraint(equalToConstant: 20),
             
             separator.topAnchor.constraint(equalTo: progressBarView.bottomAnchor, constant: 20),
             separator.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),

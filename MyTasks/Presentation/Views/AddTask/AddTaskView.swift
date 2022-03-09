@@ -30,7 +30,7 @@ class AddTaskView: UIView {
     
     lazy var headView: UIView = {
         let view = UIView()
-        view.backgroundColor = .systemPink
+//        view.backgroundColor = .systemPink
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
