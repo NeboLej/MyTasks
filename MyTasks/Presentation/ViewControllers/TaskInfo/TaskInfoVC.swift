@@ -74,7 +74,7 @@ class TaskInfoVC: UIViewController {
             }
             values.append(.init(x: Double(dateComponents.day!), y: percent))
         }
-        
+        taskInfoView.percentLabel.text = String(Int(percent))+"%"
         taskInfoView.chartView.setData(dataEntryes: values)
     }
     

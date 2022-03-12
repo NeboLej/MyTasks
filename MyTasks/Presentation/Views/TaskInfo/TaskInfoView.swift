@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 class TaskInfoView: UIView {
     
     
@@ -121,6 +120,46 @@ class TaskInfoView: UIView {
         return chartView
     }()
     
+    private lazy var percentNameLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Выполнено на"
+        label.textColor = .white
+        label.font = UIFont(name: Font.myriadProRegular, size: 20)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .center
+        return label
+    }()
+    
+     lazy var percentLabel: UILabel = {
+        let label = UILabel()
+        label.text = "100%"
+        label.textColor = .white
+        label.font = UIFont(name: Font.myriadProRegular, size: 70)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .center
+        return label
+    }()
+    
+    lazy var separator2: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.alpha = 0.5
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    lazy var finishButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    lazy var deleteButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     var taskModel: TaskModel
     
     init(taskModel: TaskModel) {
@@ -143,6 +182,16 @@ class TaskInfoView: UIView {
         periodLabel.text = String(taskModel.periodicity)
         segmentedControl.backgroundColor = taskModel.color.withAlphaComponent(0.5)
         segmentedControl.selectedSegmentTintColor = taskModel.color
+        
+        let attrFinishButton = NSMutableAttributedString( string: "Завершить задачу", attributes: [
+            .font: UIFont(name: Font.myriadProRegular, size: 20)!,
+            .foregroundColor: taskModel.color])
+        finishButton.setAttributedTitle(attrFinishButton, for: .normal)
+        
+        let attrDeleteButton = NSMutableAttributedString( string: "Удалить задачу", attributes: [
+            .font: UIFont(name: Font.myriadProRegular, size: 20)!,
+            .foregroundColor: UIColor.systemPink])
+        deleteButton.setAttributedTitle(attrDeleteButton, for: .normal)
     }
     
     private func addSubviews() {
@@ -158,7 +207,11 @@ class TaskInfoView: UIView {
         
         addSubview(segmentedControl)
         addSubview(chartView)
-        
+        addSubview(percentNameLabel)
+        addSubview(percentLabel)
+        addSubview(separator2)
+        addSubview(finishButton)
+        addSubview(deleteButton)
         
     }
     
@@ -220,11 +273,33 @@ class TaskInfoView: UIView {
             chartView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             chartView.heightAnchor.constraint(equalToConstant: 280),
             
+            percentNameLabel.topAnchor.constraint(equalTo: chartView.bottomAnchor, constant: 20),
+            percentNameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            percentNameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            percentNameLabel.heightAnchor.constraint(equalToConstant: 20),
+            
+            percentLabel.topAnchor.constraint(equalTo: percentNameLabel.bottomAnchor, constant: 0),
+            percentLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            percentLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            percentLabel.heightAnchor.constraint(equalToConstant: 70),
+            
+            separator2.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30),
+            separator2.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30),
+            separator2.topAnchor.constraint(equalTo: percentLabel.bottomAnchor, constant: 15),
+            separator2.heightAnchor.constraint(equalToConstant: 1),
+            
+            finishButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30),
+            finishButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30),
+            finishButton.topAnchor.constraint(equalTo: separator2.bottomAnchor, constant: 20),
+            finishButton.heightAnchor.constraint(equalToConstant: 20),
+            
+            deleteButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30),
+            deleteButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30),
+            deleteButton.topAnchor.constraint(equalTo: finishButton.bottomAnchor, constant: 30),
+            deleteButton.heightAnchor.constraint(equalToConstant: 20),
+                    
         ])
         
     }
-    
-    
-    
     
 }
