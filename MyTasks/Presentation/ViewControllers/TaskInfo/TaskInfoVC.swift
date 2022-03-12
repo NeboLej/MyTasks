@@ -47,19 +47,34 @@ class TaskInfoVC: UIViewController {
         let calendar = Calendar.current
         var percent = 0.0
         
-        for day in DataHandler.getCurrentWeek() {
+        var taskCost = 0.0
+        var currentInterval = [Date]()
+        switch interval {
+        case .week:
+            currentInterval = DataHandler.getCurrentWeek()
+            taskCost = 100.0 / Double(taskModel.periodicity)
+        case .month:
+            print("TODO")
+        case .year:
+            print("TODO")
+        case .allTime:
+            print("TODO")
+        }
+        
+        for day in currentInterval {
             let dateComponents = calendar.dateComponents([.day, .month, .year, .hour], from: day)
             for myDay in taskModel.dates {
                 if day == myDay {
-                    percent += 100.0 / Double(taskModel.periodicity)
+                    percent += taskCost
                 }
             }
             values.append(.init(x: Double(dateComponents.day!), y: percent))
         }
         
         taskInfoView.chartView.setData(dataEntryes: values)
-        
     }
+    
+    
     
     @objc func tapCancelButton() {
         dismiss(animated: true)
