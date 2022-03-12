@@ -61,7 +61,8 @@ class TaskInfoVC: UIViewController {
             currentInterval = DataHandler.getCurrentYaer()
             taskCost = 100.0 / (Double(taskModel.periodicity) * Double((currentInterval.count))/4)
         case .allTime:
-            print("TODO")
+            print("TODO: allTime chart")
+            return
         }
         
         for day in currentInterval {
@@ -97,6 +98,7 @@ class TaskInfoVC: UIViewController {
         case 0: setData(interval: .week)
         case 1: setData(interval: .month)
         case 2: setData(interval: .year)
+        case 3: setData(interval: .allTime)
         default: break
         }
         
