@@ -40,6 +40,7 @@ class TaskInfoVC: UIViewController {
         taskInfoView.cancelButton.addTarget(self, action: #selector(tapCancelButton), for: .touchUpInside)
         taskInfoView.changeButton.addTarget(self, action: #selector(tapChangeButton), for: .touchUpInside)
         taskInfoView.saveButton.addTarget(self, action: #selector(tapSaveButton), for: .touchUpInside)
+        taskInfoView.segmentedControl.addTarget(self, action: #selector(tapSegmentControl), for: .allEvents)
     }
     
     private func setData(interval: Interval) {
@@ -54,7 +55,8 @@ class TaskInfoVC: UIViewController {
             currentInterval = DataHandler.getCurrentWeek()
             taskCost = 100.0 / Double(taskModel.periodicity)
         case .month:
-            print("TODO")
+            currentInterval = DataHandler.getCurrentMount()
+            taskCost = 100.0 / (Double(taskModel.periodicity) * 4)
         case .year:
             print("TODO")
         case .allTime:
@@ -88,6 +90,15 @@ class TaskInfoVC: UIViewController {
         taskInfoView.isChangeTasks.toggle()
     }
     
+    
+    @objc func tapSegmentControl(sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0: setData(interval: .week)
+        case 1: setData(interval: .month)
+        default: break
+        }
+        
+    }
     
     
 }

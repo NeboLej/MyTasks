@@ -32,10 +32,20 @@ class DataHandler {
         let dateNow = Date()
         let calendar = Calendar.current
         var dateComponents = calendar.dateComponents([.year, .month, .day, .hour], from: dateNow)
-        print(dateComponents.month)
-    
-//        var fff = calendar.
         
+        //end date mount
+        dateComponents.day = 1
+        dateComponents.hour = 12
+        let monthStartDate = calendar.date(from: dateComponents)!
+
+        dateComponents.month! += 1
+        dateComponents.day! -= 1
+        let monthEndDate = calendar.date(from: dateComponents)!
+        let dc = calendar.dateComponents([.day, .hour], from: monthEndDate)
+        
+        for i in 0...dc.day!-1 {
+            month.append(calendar.date(byAdding: .day, value: i, to: monthStartDate)!)
+        }
         return month
     }
     

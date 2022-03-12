@@ -66,6 +66,7 @@ class ChartView: UIView {
         chartView.drawBordersEnabled = true
         chartView.borderColor = .clear
         chartView.autoScaleMinMaxEnabled = true
+        chartView.animate(xAxisDuration: 0.8)
     }
     
     private func setUpAxis() {

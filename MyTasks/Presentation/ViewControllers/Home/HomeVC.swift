@@ -16,7 +16,7 @@ final class HomeVC: UIViewController, VCDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        DataHandler.getCurrentMount()
+//        DataHandler.getCurrentMount()
     }
     
     init(viewModel: HomeVM) {
