@@ -41,12 +41,43 @@ class DataHandler {
         dateComponents.month! += 1
         dateComponents.day! -= 1
         let monthEndDate = calendar.date(from: dateComponents)!
-        let dc = calendar.dateComponents([.day, .hour], from: monthEndDate)
+        let dc = calendar.dateComponents([.year, .month, .day, .hour], from: monthEndDate)
         
         for i in 0...dc.day!-1 {
             month.append(calendar.date(byAdding: .day, value: i, to: monthStartDate)!)
         }
         return month
+    }
+    
+    static func getCurrentYaer() -> [Date] {
+        var year: [Date] = []
+        let dateNow = Date()
+        let calendar = Calendar.current
+        var dateComponents = calendar.dateComponents([.year, .month, .day, .hour], from: dateNow)
+        
+        //end date mount
+        dateComponents.day = 1
+        dateComponents.month = 1
+        dateComponents.hour = 12
+        let yearStartDate = calendar.date(from: dateComponents)!
+
+
+        dateComponents.month! += 2
+        dateComponents.day! -= 1
+        let yearFebruaryDate = calendar.date(from: dateComponents)!
+        let dc = calendar.dateComponents([.year, .month, .day, .hour], from: yearFebruaryDate)
+        
+        var daysCount = 0
+        if dc.day == 28 {
+            daysCount = 365
+        } else {
+            daysCount = 366
+        }
+                
+        for i in 0...daysCount-1 {
+            year.append(calendar.date(byAdding: .day, value: i, to: yearStartDate)!)
+        }
+        return year
     }
     
     

@@ -56,9 +56,10 @@ class TaskInfoVC: UIViewController {
             taskCost = 100.0 / Double(taskModel.periodicity)
         case .month:
             currentInterval = DataHandler.getCurrentMount()
-            taskCost = 100.0 / (Double(taskModel.periodicity) * 4)
+            taskCost = 100.0 / (Double(taskModel.periodicity) * Double((currentInterval.count))/4)
         case .year:
-            print("TODO")
+            currentInterval = DataHandler.getCurrentYaer()
+            taskCost = 100.0 / (Double(taskModel.periodicity) * Double((currentInterval.count))/4)
         case .allTime:
             print("TODO")
         }
@@ -95,6 +96,7 @@ class TaskInfoVC: UIViewController {
         switch sender.selectedSegmentIndex {
         case 0: setData(interval: .week)
         case 1: setData(interval: .month)
+        case 2: setData(interval: .year)
         default: break
         }
         
