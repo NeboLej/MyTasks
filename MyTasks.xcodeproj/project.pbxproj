@@ -248,7 +248,6 @@
 			isa = PBXGroup;
 			children = (
 				FA7F523727C97D07000B8B39 /* AddTaskView.swift */,
-				FAF16E1427D95A01005D791F /* ChartView.swift */,
 			);
 			path = AddTask;
 			sourceTree = "<group>";
@@ -280,6 +279,7 @@
 		FAF8F13527D63E300088E450 /* TaskInfo */ = {
 			isa = PBXGroup;
 			children = (
+				FAF16E1427D95A01005D791F /* ChartView.swift */,
 				FAF8F13627D63E540088E450 /* TaskInfoView.swift */,
 			);
 			path = TaskInfo;

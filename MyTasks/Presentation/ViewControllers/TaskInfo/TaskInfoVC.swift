@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import Charts
 
 class TaskInfoVC: UIViewController {
     
 
     let taskInfoView: TaskInfoView
+    let taskModel: TaskModel
     
     
     override func loadView() {
@@ -19,11 +21,14 @@ class TaskInfoVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         addTargets()
+        setData(interval: .week)
     }
     
     init(taskModel: TaskModel) {
         taskInfoView = TaskInfoView(taskModel: taskModel)
+        self.taskModel = taskModel
         super.init(nibName: nil, bundle: nil)
+        
         
     }
     
@@ -35,6 +40,25 @@ class TaskInfoVC: UIViewController {
         taskInfoView.cancelButton.addTarget(self, action: #selector(tapCancelButton), for: .touchUpInside)
         taskInfoView.changeButton.addTarget(self, action: #selector(tapChangeButton), for: .touchUpInside)
         taskInfoView.saveButton.addTarget(self, action: #selector(tapSaveButton), for: .touchUpInside)
+    }
+    
+    private func setData(interval: Interval) {
+        var values = [ChartDataEntry]()
+        let calendar = Calendar.current
+        var percent = 0.0
+        
+        for day in DataHandler.getCurrentWeek() {
+            let dateComponents = calendar.dateComponents([.day, .month, .year, .hour], from: day)
+            for myDay in taskModel.dates {
+                if day == myDay {
+                    percent += 100.0 / Double(taskModel.periodicity)
+                }
+            }
+            values.append(.init(x: Double(dateComponents.day!), y: percent))
+        }
+        
+        taskInfoView.chartView.setData(dataEntryes: values)
+        
     }
     
     @objc func tapCancelButton() {
@@ -49,4 +73,14 @@ class TaskInfoVC: UIViewController {
         taskInfoView.isChangeTasks.toggle()
     }
     
+    
+    
+}
+
+
+enum Interval {
+    case week
+    case month
+    case year
+    case allTime
 }

@@ -28,6 +28,25 @@ class DataHandler {
     }
     
     
+    static func getDates(for interval: Interval, dates: [Date]) -> [Double] {
+        
+        var resultDates = [Double]()
+        
+        let week = DataHandler.getCurrentWeek()
+        for myDay in dates {
+            for day in week {
+                if day == myDay {
+                    let calendar = Calendar.current
+                    let dateComponents = calendar.dateComponents([.day, .month, .year, .hour], from: day)
+                    resultDates.append(Double(dateComponents.day!))
+                }
+            }
+        }
+        
+        
+        return resultDates
+    }
+    
     
  
 }

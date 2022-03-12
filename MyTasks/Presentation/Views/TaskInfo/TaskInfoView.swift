@@ -114,6 +114,13 @@ class TaskInfoView: UIView {
         return sc
     }()
     
+    lazy var chartView: ChartView = {
+        let chartView = ChartView(color: taskModel.color)
+        chartView.translatesAutoresizingMaskIntoConstraints = false
+        chartView.backgroundColor = .clear
+        return chartView
+    }()
+    
     var taskModel: TaskModel
     
     init(taskModel: TaskModel) {
@@ -150,6 +157,7 @@ class TaskInfoView: UIView {
         addSubview(periodLabel)
         
         addSubview(segmentedControl)
+        addSubview(chartView)
         
         
     }
@@ -205,7 +213,12 @@ class TaskInfoView: UIView {
             segmentedControl.topAnchor.constraint(equalTo: headView.bottomAnchor, constant: 30),
             segmentedControl.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 45),
             segmentedControl.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -45),
-            segmentedControl.heightAnchor.constraint(equalToConstant: 32)
+            segmentedControl.heightAnchor.constraint(equalToConstant: 32),
+            
+            chartView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 30),
+            chartView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            chartView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            chartView.heightAnchor.constraint(equalToConstant: 280),
             
         ])
         
