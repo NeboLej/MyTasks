@@ -1,11 +1,19 @@
 import UIKit
 
-struct TaskModel: Codable {
+class TaskModel: Codable {
     var name: String
     @CodableColor var color: UIColor
     var discription: String
     var periodicity: Int
-    var dates: [Date]
+    var dates: [Date] = []
+    var isActive = true
+    
+    init(name: String, color: UIColor, discription: String, periodicity: Int) {
+        self.name = name
+        self.color = color
+        self.discription = discription
+        self.periodicity = periodicity
+    }
 }
 
 @propertyWrapper
