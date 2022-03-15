@@ -66,8 +66,6 @@ final class TaskCell: UICollectionViewCell {
         super.prepareForReuse()
         taskName.text = nil
 //        taskDates = nil
-        
-        
     }
     
     override init(frame: CGRect) {
@@ -161,7 +159,6 @@ final class TaskCell: UICollectionViewCell {
         }
         box.isActiv.toggle()
         print(vm.activeTaskList[indexCell].dates)
-//        vm.taskList[index].dates = taskDates
         animationTask()
     }
     
@@ -175,8 +172,7 @@ final class TaskCell: UICollectionViewCell {
             self.circle.center = .init(x: 0, y: 0)
             self.circle.layer.cornerRadius = circleSize/2
         }
-    }
-    
+    }    
     
     private func initConstraints() {
         NSLayoutConstraint.activate([
@@ -202,6 +198,5 @@ final class TaskCell: UICollectionViewCell {
             stackView.widthAnchor.constraint(equalToConstant: 185),
         ])
     }
-    
     
 }
