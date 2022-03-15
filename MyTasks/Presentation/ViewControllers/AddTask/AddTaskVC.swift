@@ -2,6 +2,7 @@ import UIKit
 
 protocol VCDelegate {
     func reloadCollections(task: TaskModel)
+    func hideTask(index: Int)
 }
 
 class AddTaskVC: UIViewController {

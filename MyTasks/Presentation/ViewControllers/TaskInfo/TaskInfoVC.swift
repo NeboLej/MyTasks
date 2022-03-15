@@ -13,6 +13,8 @@ class TaskInfoVC: UIViewController {
 
     let taskInfoView: TaskInfoView
     let taskModel: TaskModel
+    let taskIndex: Int
+    var delegate: VCDelegate!
     
     
     override func loadView() {
@@ -24,12 +26,11 @@ class TaskInfoVC: UIViewController {
         setData(interval: .week)
     }
     
-    init(taskModel: TaskModel) {
+    init(taskModel: TaskModel, Index: Int) {
         taskInfoView = TaskInfoView(taskModel: taskModel)
+        self.taskIndex = Index
         self.taskModel = taskModel
         super.init(nibName: nil, bundle: nil)
-        
-        
     }
     
     required init?(coder: NSCoder) {
@@ -41,6 +42,7 @@ class TaskInfoVC: UIViewController {
         taskInfoView.changeButton.addTarget(self, action: #selector(tapChangeButton), for: .touchUpInside)
         taskInfoView.saveButton.addTarget(self, action: #selector(tapSaveButton), for: .touchUpInside)
         taskInfoView.segmentedControl.addTarget(self, action: #selector(tapSegmentControl), for: .allEvents)
+        taskInfoView.finishButton.addTarget(self, action: #selector(tapHideTaskButton), for: .touchUpInside)
     }
     
     private func setData(interval: Interval) {
@@ -92,7 +94,11 @@ class TaskInfoVC: UIViewController {
         taskInfoView.isChangeTasks.toggle()
     }
     
-    
+    @objc func tapHideTaskButton() {
+        self.delegate.hideTask(index: taskIndex)
+        dismiss(animated: true)
+    }
+
     @objc func tapSegmentControl(sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0: setData(interval: .week)

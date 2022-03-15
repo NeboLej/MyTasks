@@ -12,9 +12,9 @@ class UserDefaultsManager {
     private let defaultUser = UserDefaults.standard
     
     
-    private var usetTasks: [TaskModel] {
+    private var userActiveTasks: [TaskModel] {
         get {
-            if let data = defaultUser.value(forKey: "userTasks") as? Foundation.Data {
+            if let data = defaultUser.value(forKey: "userActiveTasks") as? Foundation.Data {
                 return try! PropertyListDecoder().decode([TaskModel].self, from: data)
             } else {
                 return []
@@ -22,18 +22,41 @@ class UserDefaultsManager {
         }
         set {
             if let data = try? PropertyListEncoder().encode(newValue) {
-                defaultUser.set(data, forKey: "userTasks")
+                defaultUser.set(data, forKey: "userActiveTasks")
             }
         }
     }
     
-    func saveTasks(tasks: [TaskModel]) {
-        self.usetTasks = tasks
-        
+    private var userHideTasks: [TaskModel] {
+        get {
+            if let data = defaultUser.value(forKey: "userHideTasks") as? Foundation.Data {
+                return try! PropertyListDecoder().decode([TaskModel].self, from: data)
+            } else {
+                return []
+            }
+        }
+        set {
+            if let data = try? PropertyListEncoder().encode(newValue) {
+                defaultUser.set(data, forKey: "userHideTasks")
+            }
+        }
     }
     
-    func getTasks() -> [TaskModel] {
-        self.usetTasks
+    
+    func saveActiveTasks(tasks: [TaskModel]) {
+        self.userActiveTasks = tasks
+    }
+    
+    func getActiveTasks() -> [TaskModel] {
+        self.userActiveTasks
+    }
+    
+    func saveHideTasks(tasks: [TaskModel]) {
+        self.userHideTasks = tasks
+    }
+    
+    func getHideTasks() -> [TaskModel] {
+        self.userHideTasks
     }
     
 }

@@ -83,10 +83,10 @@ final class TaskCell: UICollectionViewCell {
         self.vm = vm
         self.size = size
 
-        periodicity = vm.taskList[index].periodicity
-        background.backgroundColor = vm.taskList[index].color
-        circle.backgroundColor = vm.taskList[index].color
-        taskName.text = vm.taskList[index].name
+        periodicity = vm.activeTaskList[index].periodicity
+        background.backgroundColor = vm.activeTaskList[index].color
+        circle.backgroundColor = vm.activeTaskList[index].color
+        taskName.text = vm.activeTaskList[index].name
         procent.text = String(percentTask) + "%"
         
         let circleSize = getDiameter(size: size)
@@ -118,7 +118,7 @@ final class TaskCell: UICollectionViewCell {
     private func getPercentTask() -> Int {
         var count = 0
         for date in weekDates {
-            for dateTask in vm.taskList[indexCell].dates {
+            for dateTask in vm.activeTaskList[indexCell].dates {
                 if date == dateTask {count += 1}
             }
         }
@@ -136,7 +136,7 @@ final class TaskCell: UICollectionViewCell {
     func loadBox() {
         stackView.arrangedSubviews.forEach { view in
             let box = view as! CheckBox
-            for taskDate in vm.taskList[indexCell].dates {
+            for taskDate in vm.activeTaskList[indexCell].dates {
                 if weekDates[box.index] == taskDate {
                     box.isActiv = true
                 }
@@ -148,19 +148,19 @@ final class TaskCell: UICollectionViewCell {
         let box = sender as! CheckBox
         if box.isActiv {
             var index = 0
-            for taskDate in vm.taskList[indexCell].dates {
+            for taskDate in vm.activeTaskList[indexCell].dates {
                 if taskDate == weekDates[box.index] {
                     break
                 }
                 index += 1
             }
-            vm.taskList[indexCell].dates.remove(at: index)
+            vm.activeTaskList[indexCell].dates.remove(at: index)
             
         } else {
-            vm.taskList[indexCell].dates.append(weekDates[box.index])
+            vm.activeTaskList[indexCell].dates.append(weekDates[box.index])
         }
         box.isActiv.toggle()
-        print(vm.taskList[indexCell].dates)
+        print(vm.activeTaskList[indexCell].dates)
 //        vm.taskList[index].dates = taskDates
         animationTask()
     }

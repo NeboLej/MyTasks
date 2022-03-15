@@ -2,8 +2,6 @@ import UIKit
 
 final class HomeVC: UIViewController, VCDelegate {
     
-
-    
     private let homeView = HomeView()
     private var homeVM: HomeVM
     
@@ -40,7 +38,13 @@ final class HomeVC: UIViewController, VCDelegate {
     }
     
     func reloadCollections(task: TaskModel) {
-        homeVM.taskList.append(task)
+        homeVM.activeTaskList.append(task)
+        homeView.tasksCollectionView.reloadData()
+    }
+    
+    func hideTask(index: Int) {
+        let hideModel = homeVM.activeTaskList.remove(at: index)
+        homeVM.hideTaskList.append(hideModel)
         homeView.tasksCollectionView.reloadData()
     }
     
@@ -63,7 +67,7 @@ final class HomeVC: UIViewController, VCDelegate {
 
 extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        homeVM.taskList.count
+        homeVM.activeTaskList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -83,8 +87,8 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(indexPath.item)
         
-        let vc = TaskInfoVC(taskModel: homeVM.taskList[indexPath.item])
-//        vc.delegate = self
+        let vc = TaskInfoVC(taskModel: homeVM.activeTaskList[indexPath.item], Index: indexPath.item)
+        vc.delegate = self
         vc.modalPresentationStyle = .automatic
         present(vc, animated: true, completion: nil)
         
