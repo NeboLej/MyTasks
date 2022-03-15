@@ -54,7 +54,7 @@ final class TaskCell: UICollectionViewCell {
     private var size: CGSize!
     static let cellId = "TaskCell"
     lazy var percentTask = getPercentTask()
-    var taskModel: TaskModel!
+    var vm: HomeVM!
     var indexCell: Int!
     
     override func layoutSubviews() {
@@ -77,15 +77,16 @@ final class TaskCell: UICollectionViewCell {
         initConstraints()
     }
 
-    func setupCell(taskModel: TaskModel, size: CGSize) {
+    func setupCell(vm: HomeVM, index: Int, size: CGSize) {
         backgroundColor = .clear
-        self.taskModel = taskModel
+        self.indexCell = index
+        self.vm = vm
         self.size = size
 
-        periodicity = taskModel.periodicity
-        background.backgroundColor = taskModel.color
-        circle.backgroundColor = taskModel.color
-        taskName.text = taskModel.name
+        periodicity = vm.activeTaskList[index].periodicity
+        background.backgroundColor = vm.activeTaskList[index].color
+        circle.backgroundColor = vm.activeTaskList[index].color
+        taskName.text = vm.activeTaskList[index].name
         procent.text = String(percentTask) + "%"
         
         let circleSize = getDiameter(size: size)
@@ -117,7 +118,7 @@ final class TaskCell: UICollectionViewCell {
     private func getPercentTask() -> Int {
         var count = 0
         for date in weekDates {
-            for dateTask in taskModel.dates {
+            for dateTask in vm.activeTaskList[indexCell].dates {
                 if date == dateTask {count += 1}
             }
         }
@@ -135,7 +136,7 @@ final class TaskCell: UICollectionViewCell {
     func loadBox() {
         stackView.arrangedSubviews.forEach { view in
             let box = view as! CheckBox
-            for taskDate in taskModel.dates {
+            for taskDate in vm.activeTaskList[indexCell].dates {
                 if weekDates[box.index] == taskDate {
                     box.isActiv = true
                 }
@@ -147,19 +148,20 @@ final class TaskCell: UICollectionViewCell {
         let box = sender as! CheckBox
         if box.isActiv {
             var index = 0
-            for taskDate in taskModel.dates {
+            for taskDate in vm.activeTaskList[indexCell].dates {
                 if taskDate == weekDates[box.index] {
                     break
                 }
                 index += 1
             }
-            taskModel.dates.remove(at: index)
+            vm.activeTaskList[indexCell].dates.remove(at: index)
             
         } else {
-            taskModel.dates.append(weekDates[box.index])
+            vm.activeTaskList[indexCell].dates.append(weekDates[box.index])
         }
         box.isActiv.toggle()
-        print(taskModel.dates)
+        print(vm.activeTaskList[indexCell].dates)
+//        vm.taskList[index].dates = taskDates
         animationTask()
     }
     

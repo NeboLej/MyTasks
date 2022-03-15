@@ -2,8 +2,6 @@ import UIKit
 
 final class HomeVC: UIViewController, VCDelegate {
     
-
-    
     private let homeView = HomeView()
     private var homeVM: HomeVM
     
@@ -40,7 +38,13 @@ final class HomeVC: UIViewController, VCDelegate {
     }
     
     func reloadCollections(task: TaskModel) {
-        homeVM.taskList.append(task)
+        homeVM.activeTaskList.append(task)
+        homeView.tasksCollectionView.reloadData()
+    }
+    
+    func hideTask(index: Int) {
+        let hideModel = homeVM.activeTaskList.remove(at: index)
+        homeVM.hideTaskList.append(hideModel)
         homeView.tasksCollectionView.reloadData()
     }
     
@@ -59,30 +63,20 @@ final class HomeVC: UIViewController, VCDelegate {
         vc.modalPresentationStyle = .automatic
         present(vc, animated: true, completion: nil)
     }
-    
-    func hideTask() {
-        homeVM.taskList = activeTasks + noAvciveTasks
-        homeView.tasksCollectionView.reloadData()
-        print("hideTask")
-    }
-    var activeTasks = [TaskModel]()
-    var noAvciveTasks = [TaskModel]()
 }
-
 
 extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        activeTasks = []
-        homeVM.taskList.forEach { model in
-            if model.isActive { activeTasks.append(model)} else { noAvciveTasks.append(model)}
-        }
-        return activeTasks.count
+        homeVM.activeTaskList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TaskCell.cellId, for: indexPath) as! TaskCell
-        cell.setupCell(taskModel: activeTasks[indexPath.item], size: CGSize(width: cell.bounds.width, height: cell.bounds.height))
+        let index = indexPath.item
+
+        cell.setupCell(vm: homeVM, index: index, size: CGSize(width: cell.bounds.width, height: cell.bounds.height))
         cell.loadBox()
+        
         return cell
     }
     
@@ -93,7 +87,7 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(indexPath.item)
         
-        let vc = TaskInfoVC(taskModel: activeTasks[indexPath.item], indexTask: indexPath.item)
+        let vc = TaskInfoVC(taskModel: homeVM.activeTaskList[indexPath.item], Index: indexPath.item)
         vc.delegate = self
         vc.modalPresentationStyle = .automatic
         present(vc, animated: true, completion: nil)

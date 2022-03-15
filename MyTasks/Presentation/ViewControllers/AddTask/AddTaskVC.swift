@@ -2,7 +2,7 @@ import UIKit
 
 protocol VCDelegate {
     func reloadCollections(task: TaskModel)
-    func hideTask()
+    func hideTask(index: Int)
 }
 
 class AddTaskVC: UIViewController {
@@ -40,11 +40,11 @@ class AddTaskVC: UIViewController {
     }
     
     @objc private func tapSaveButton() {
-        delegate?.reloadCollections(task: TaskModel(name: taskView.nameTextField.text ?? "",
-                                                    color: taskView.colorButton.backgroundColor!,
-                                                    discription: taskView.discriptionTextField.text ?? "",
-                                                    periodicity: Int(taskView.periodTextField.text!)!))
-
+        delegate?.reloadCollections(task: .init(name: taskView.nameTextField.text ?? "",
+                                                color: taskView.colorButton.backgroundColor!,
+                                                discription: taskView.discriptionTextField.text ?? "",
+                                                periodicity: Int(taskView.periodTextField.text!)!,
+                                                dates: []))
         dismiss(animated: true)
     }
     
