@@ -59,20 +59,30 @@ final class HomeVC: UIViewController, VCDelegate {
         vc.modalPresentationStyle = .automatic
         present(vc, animated: true, completion: nil)
     }
+    
+    func hideTask() {
+        homeVM.taskList = activeTasks + noAvciveTasks
+        homeView.tasksCollectionView.reloadData()
+        print("hideTask")
+    }
+    var activeTasks = [TaskModel]()
+    var noAvciveTasks = [TaskModel]()
 }
+
 
 extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        homeVM.taskList.count
+        activeTasks = []
+        homeVM.taskList.forEach { model in
+            if model.isActive { activeTasks.append(model)} else { noAvciveTasks.append(model)}
+        }
+        return activeTasks.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TaskCell.cellId, for: indexPath) as! TaskCell
-        let index = indexPath.item
-
-        cell.setupCell(vm: homeVM, index: index, size: CGSize(width: cell.bounds.width, height: cell.bounds.height))
+        cell.setupCell(taskModel: activeTasks[indexPath.item], size: CGSize(width: cell.bounds.width, height: cell.bounds.height))
         cell.loadBox()
-        
         return cell
     }
     
@@ -83,8 +93,8 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(indexPath.item)
         
-        let vc = TaskInfoVC(taskModel: homeVM.taskList[indexPath.item])
-//        vc.delegate = self
+        let vc = TaskInfoVC(taskModel: activeTasks[indexPath.item], indexTask: indexPath.item)
+        vc.delegate = self
         vc.modalPresentationStyle = .automatic
         present(vc, animated: true, completion: nil)
         
