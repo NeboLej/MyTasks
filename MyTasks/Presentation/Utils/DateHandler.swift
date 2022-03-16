@@ -1,6 +1,6 @@
 import Foundation
 
-class DataHandler {
+class DateHandler {
     
     static func getCurrentWeek() -> [Date] {
         var week: [Date] = []

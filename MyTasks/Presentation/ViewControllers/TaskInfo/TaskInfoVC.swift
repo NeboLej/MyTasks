@@ -43,6 +43,7 @@ class TaskInfoVC: UIViewController {
         taskInfoView.saveButton.addTarget(self, action: #selector(tapSaveButton), for: .touchUpInside)
         taskInfoView.segmentedControl.addTarget(self, action: #selector(tapSegmentControl), for: .allEvents)
         taskInfoView.finishButton.addTarget(self, action: #selector(tapHideTaskButton), for: .touchUpInside)
+        taskInfoView.deleteButton.addTarget(self, action: #selector(tapDeleteTaskButton), for: .touchUpInside)
     }
     
     private func setData(interval: Interval) {
@@ -54,13 +55,13 @@ class TaskInfoVC: UIViewController {
         var currentInterval = [Date]()
         switch interval {
         case .week:
-            currentInterval = DataHandler.getCurrentWeek()
+            currentInterval = DateHandler.getCurrentWeek()
             taskCost = 100.0 / Double(taskModel.periodicity)
         case .month:
-            currentInterval = DataHandler.getCurrentMount()
+            currentInterval = DateHandler.getCurrentMount()
             taskCost = 100.0 / (Double(taskModel.periodicity) * Double((currentInterval.count))/4)
         case .year:
-            currentInterval = DataHandler.getCurrentYaer()
+            currentInterval = DateHandler.getCurrentYaer()
             taskCost = 100.0 / (Double(taskModel.periodicity) * Double((currentInterval.count))/4)
         case .allTime:
             print("TODO: allTime chart")
@@ -96,6 +97,11 @@ class TaskInfoVC: UIViewController {
     
     @objc func tapHideTaskButton() {
         self.delegate.hideTask(index: taskIndex)
+        dismiss(animated: true)
+    }
+    
+    @objc func tapDeleteTaskButton() {
+        self.delegate.deleteTask(index: taskIndex)
         dismiss(animated: true)
     }
 

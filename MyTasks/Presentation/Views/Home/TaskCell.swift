@@ -49,7 +49,7 @@ final class TaskCell: UICollectionViewCell {
         return circle
     }()
     
-    private lazy var weekDates = DataHandler.getCurrentWeek()
+    private lazy var weekDates = DateHandler.getCurrentWeek()
     private var periodicity: Int!
     private var size: CGSize!
     static let cellId = "TaskCell"

@@ -22,7 +22,7 @@
 		D46FD88E27C5A43A00D142CD /* MyriadPro-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D46FD88C27C5A43A00D142CD /* MyriadPro-Bold.ttf */; };
 		D46FD88F27C5A43A00D142CD /* MyriadPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D46FD88D27C5A43A00D142CD /* MyriadPro-Regular.ttf */; };
 		D47F716A27BC43700012D0B8 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47F716927BC43700012D0B8 /* TaskCell.swift */; };
-		D47F716D27BC47300012D0B8 /* DataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47F716C27BC47300012D0B8 /* DataHandler.swift */; };
+		D47F716D27BC47300012D0B8 /* DateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47F716C27BC47300012D0B8 /* DateHandler.swift */; };
 		D47F716F27BC58B00012D0B8 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47F716E27BC58B00012D0B8 /* Font.swift */; };
 		D48D339727BFACC1008A0642 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48D339627BFACC1008A0642 /* CheckBox.swift */; };
 		E087096F6E86437A468450ED /* Pods_MyTasks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06B900DAB5FC22EE46CD2135 /* Pods_MyTasks.framework */; };
@@ -56,7 +56,7 @@
 		D46FD88C27C5A43A00D142CD /* MyriadPro-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-Bold.ttf"; sourceTree = "<group>"; };
 		D46FD88D27C5A43A00D142CD /* MyriadPro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-Regular.ttf"; sourceTree = "<group>"; };
 		D47F716927BC43700012D0B8 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
-		D47F716C27BC47300012D0B8 /* DataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHandler.swift; sourceTree = "<group>"; };
+		D47F716C27BC47300012D0B8 /* DateHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHandler.swift; sourceTree = "<group>"; };
 		D47F716E27BC58B00012D0B8 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		D48D339627BFACC1008A0642 /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		DCB39C8716037B7698A93339 /* Pods-MyTasks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyTasks.release.xcconfig"; path = "Target Support Files/Pods-MyTasks/Pods-MyTasks.release.xcconfig"; sourceTree = "<group>"; };
@@ -229,7 +229,7 @@
 		D47F716B27BC471A0012D0B8 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				D47F716C27BC47300012D0B8 /* DataHandler.swift */,
+				D47F716C27BC47300012D0B8 /* DateHandler.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -420,7 +420,7 @@
 				D45FBA5D27BEEF7E002EB9C8 /* TaskModel.swift in Sources */,
 				D44C52D927B9C049009939C3 /* HomeVC.swift in Sources */,
 				FAF37C6027D5632D00B4D4C8 /* UserDefaultsManager.swift in Sources */,
-				D47F716D27BC47300012D0B8 /* DataHandler.swift in Sources */,
+				D47F716D27BC47300012D0B8 /* DateHandler.swift in Sources */,
 				FAECB4E327CAC3EB00964DDA /* PalettePopUpView.swift in Sources */,
 				FAF16E1527D95A01005D791F /* ChartView.swift in Sources */,
 				D47F716F27BC58B00012D0B8 /* Font.swift in Sources */,
