@@ -11,7 +11,7 @@ final class TaskCell: UICollectionViewCell {
         return label
     }()
     
-    lazy var procent: UILabel = {
+    lazy var percent: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: Font.myriadProRegular, size: 22)
         label.textColor = .baseText
@@ -57,16 +57,16 @@ final class TaskCell: UICollectionViewCell {
     var vm: HomeVM!
     var indexCell: Int!
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        taskName.text = nil
-//        taskDates = nil
-    }
+//    override func layoutSubviews() {
+//        super.layoutSubviews()
+//
+//    }
+//
+//    override func prepareForReuse() {
+//        super.prepareForReuse()
+//        taskName.text = nil
+////        taskDates = nil
+//    }
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -85,7 +85,7 @@ final class TaskCell: UICollectionViewCell {
         background.backgroundColor = vm.activeTaskList[index].color
         circle.backgroundColor = vm.activeTaskList[index].color
         taskName.text = vm.activeTaskList[index].name
-        procent.text = String(percentTask) + "%"
+        percent.text = String(percentTask) + "%"
         
         let circleSize = getDiameter(size: size)
         circle.frame = .init(x: 0, y: 0, width: circleSize, height: circleSize)
@@ -108,8 +108,7 @@ final class TaskCell: UICollectionViewCell {
         addSubview(background)
         addSubview(circle)
         addSubview(taskName)
-        
-        addSubview(procent)
+        addSubview(percent)
         addSubview(stackView)
     }
     
@@ -167,7 +166,7 @@ final class TaskCell: UICollectionViewCell {
         let circleSize = getDiameter(size: size)
 
         UIView.animate(withDuration: 0.4, delay: 0, options: [.curveEaseOut]) {
-            self.procent.text = String(self.percentTask) + "%"
+            self.percent.text = String(self.percentTask) + "%"
             self.circle.frame = .init(x: 0, y: 0, width: circleSize, height: circleSize)
             self.circle.center = .init(x: 0, y: 0)
             self.circle.layer.cornerRadius = circleSize/2
@@ -187,10 +186,10 @@ final class TaskCell: UICollectionViewCell {
             taskName.heightAnchor.constraint(equalToConstant: 25),
             taskName.widthAnchor.constraint(equalToConstant: 150),
             
-            procent.topAnchor.constraint(equalTo: taskName.bottomAnchor, constant: 5),
-            procent.leadingAnchor.constraint(equalTo: taskName.leadingAnchor, constant: 0),
-            procent.heightAnchor.constraint(equalToConstant: 25),
-            procent.widthAnchor.constraint(equalToConstant: 100),
+            percent.topAnchor.constraint(equalTo: taskName.bottomAnchor, constant: 5),
+            percent.leadingAnchor.constraint(equalTo: taskName.leadingAnchor, constant: 0),
+            percent.heightAnchor.constraint(equalToConstant: 25),
+            percent.widthAnchor.constraint(equalToConstant: 100),
             
             stackView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),

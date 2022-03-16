@@ -49,6 +49,7 @@ class HomeView: UIView {
         collectionView.register(TaskCell.self, forCellWithReuseIdentifier: TaskCell.cellId)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .clear
+        collectionView.isPrefetchingEnabled = false
         return collectionView
     }()
     
