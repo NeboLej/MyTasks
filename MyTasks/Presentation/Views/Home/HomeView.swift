@@ -82,9 +82,9 @@ class HomeView: UIView {
     }
     
     private func fillStackView() {
-        let daysDate = DataHandler.getCurrentWeek()
+        let daysDate = DateHandler.getCurrentWeek()
         let daysName = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"]
-        let currentDay = DataHandler.getCurrentDay()
+        let currentDay = DateHandler.getCurrentDay()
         let calendar = Calendar.current
 
         for index in 0...6 {

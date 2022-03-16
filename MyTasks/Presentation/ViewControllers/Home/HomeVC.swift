@@ -1,6 +1,8 @@
 import UIKit
 
 final class HomeVC: UIViewController, VCDelegate {
+
+    
     
     private let homeView = HomeView()
     private var homeVM: HomeVM
@@ -48,6 +50,11 @@ final class HomeVC: UIViewController, VCDelegate {
         homeView.tasksCollectionView.reloadData()
     }
     
+    func deleteTask(index: Int) {
+        homeVM.activeTaskList.remove(at: index)
+        homeView.tasksCollectionView.reloadData()
+    }
+    
     private func sutupDelegates() {
         homeView.tasksCollectionView.delegate = self
         homeView.tasksCollectionView.dataSource = self
@@ -64,6 +71,9 @@ final class HomeVC: UIViewController, VCDelegate {
         present(vc, animated: true, completion: nil)
     }
 }
+
+
+
 
 extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

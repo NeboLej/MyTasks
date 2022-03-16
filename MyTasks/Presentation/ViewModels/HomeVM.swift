@@ -21,7 +21,6 @@ class HomeVM {
             saveHideTaskList(taskList: newValue)
         }
     }
-    
 
     init() {
         activeTaskList = userDefaultsManager.getActiveTasks()
