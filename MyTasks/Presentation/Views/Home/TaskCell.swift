@@ -56,6 +56,7 @@ final class TaskCell: UICollectionViewCell {
     lazy var percentTask = getPercentTask()
     var vm: HomeVM!
     var indexCell: Int!
+    var delegate: VCDelegate!
     
 //    override func layoutSubviews() {
 //        super.layoutSubviews()
@@ -159,6 +160,7 @@ final class TaskCell: UICollectionViewCell {
         box.isActiv.toggle()
         print(vm.activeTaskList[indexCell].dates)
         animationTask()
+        delegate.updateProgressBar()
     }
     
     private func animationTask() {

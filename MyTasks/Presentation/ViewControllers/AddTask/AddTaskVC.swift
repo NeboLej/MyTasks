@@ -4,6 +4,7 @@ protocol VCDelegate {
     func reloadCollections(task: TaskModel)
     func hideTask(index: Int)
     func deleteTask(index: Int)
+    func updateProgressBar()
 }
 
 class AddTaskVC: UIViewController {
