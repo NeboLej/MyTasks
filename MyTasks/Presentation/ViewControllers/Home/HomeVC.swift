@@ -24,7 +24,12 @@ final class HomeVC: UIViewController, VCDelegate {
         super.init(nibName: nil, bundle: nil)
         setupTargets()
         sutupDelegates()
+        updateProgressBar()
    
+    }
+    
+    func updateProgressBar() {
+        homeView.progressBarView.update(taskList: homeVM.activeTaskList)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -42,17 +47,20 @@ final class HomeVC: UIViewController, VCDelegate {
     func reloadCollections(task: TaskModel) {
         homeVM.activeTaskList.append(task)
         homeView.tasksCollectionView.reloadData()
+        updateProgressBar()
     }
     
     func hideTask(index: Int) {
         let hideModel = homeVM.activeTaskList.remove(at: index)
         homeVM.hideTaskList.append(hideModel)
         homeView.tasksCollectionView.reloadData()
+        updateProgressBar()
     }
     
     func deleteTask(index: Int) {
         homeVM.activeTaskList.remove(at: index)
         homeView.tasksCollectionView.reloadData()
+        updateProgressBar()
     }
     
     private func sutupDelegates() {
@@ -84,6 +92,7 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TaskCell.cellId, for: indexPath) as! TaskCell
         let index = indexPath.item
 
+        cell.delegate = self
         cell.setupCell(vm: homeVM, index: index, size: CGSize(width: cell.bounds.width, height: cell.bounds.height))
         cell.loadBox()
         
